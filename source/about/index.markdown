@@ -6,4 +6,11 @@ comments: true
 sharing: true
 footer: true
 ---
-Hello, my name is Seto El Kahfi
+Find me on internet with @setoelkahfi
+
+I write code.
+I write book (after my 100th book on goodreads.com list).
+I write music.
+
+
+"Be the change you want to see in this world."
