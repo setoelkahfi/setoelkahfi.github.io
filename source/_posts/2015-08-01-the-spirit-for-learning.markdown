@@ -4,9 +4,18 @@ title: "The Spirit for Learning"
 date: 2015-08-01 02:41:48 +0700
 comments: true
 categories: [Learning,MOOC]
-published: false
+published: true
 ---
 So this is my first trial post with octopress.
+
+[UPDATE 2016-03-22]
+
+So finally I use MacOSX, hahaha
+
+<!-- more -->
+
+I'll keep below  example markup as my reference.
+
 <h2>Codeblock</h2>
 {% codeblock Javascript Array Syntax lang:js http://j.mp/pPUUmW MDN Documentation %}
 var arr1 = new Array(arrayLength);
