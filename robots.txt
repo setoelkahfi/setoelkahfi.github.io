@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: 
+
+Sitemap: http://setoelkahfi.github.io/sitemap.xml 

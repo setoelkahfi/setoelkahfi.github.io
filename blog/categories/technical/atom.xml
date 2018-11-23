@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Technical | Seto Elkahfi]]></title>
+  <link href="http://setoelkahfi.github.io/blog/categories/technical/atom.xml" rel="self"/>
+  <link href="http://setoelkahfi.github.io/"/>
+  <updated>2018-11-23T19:14:22+01:00</updated>
+  <id>http://setoelkahfi.github.io/</id>
+  <author>
+    <name><![CDATA[Seto Elkahfi]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Seto, This Is How You Setup This Blog in Another Machine]]></title>
+    <link href="http://setoelkahfi.github.io/blog/2018/11/23/seto-this-is-how-you-setup-this-blog-in-another-machine/"/>
+    <updated>2018-11-23T12:14:36+01:00</updated>
+    <id>http://setoelkahfi.github.io/blog/2018/11/23/seto-this-is-how-you-setup-this-blog-in-another-machine</id>
+    <content type="html"><![CDATA[<p>This is new chapter in my life. I&rsquo;ve been working in Sweden since 19 November. Moving to Sweden itself is a new experience for me. So, everything surround that are also new, except some general things, such as work, Indonesian friends, iOS development, and MacBook.</p>
+
+<p>I&rsquo;ve been working since I graduated from technical high school when I was 19. There are some Indonesian friends here in Sweden, mostly students. I&rsquo;ve been working as iOS developer since 2016, so it&rsquo;s not really new experience either. And since that time, I&rsquo;ve been using Macbook for sure.</p>
+
+<p>But, I always face difficulties when I setup this blog in new machine. So, dear future self, this is how you do it.</p>
+
+<!-- more -->
+
+
+
+
+<h2>Prerequisites</h2>
+
+
+<p>You need to have Ruby installed in you new shiny machine, Seto. You always use the latest stable branch. So, go ahead.
+<code>bash
+$ ruby --version
+</code>
+Surround your pullquote like this {&#8221; text to be quoted &#8220;}</p>
+
+<pre><code class="bash">$ brew install rbenv
+$ rbenv init
+# Load rbenv automatically by appending
+# the following to ~/.bash_profile:
+
+eval "$(rbenv init -)"
+</code></pre>
+
+<p>In this step, you usually face difficulty. Basically you just need to put that line in your .bash_profile. Or just execute this line:
+<code>bash
+echo 'eval "$(rbenv init -)"' &gt;&gt; ~/.bash_profile
+</code>
+If you open the file, it should looks like this:
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>vim ~/.bash_profile&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;export <span class="nv">LC_ALL</span><span class="o">=</span>en_US.UTF-8
+</span><span class='line'><span class="nb">export </span><span class="nv">LANG</span><span class="o">=</span>en_US.UTF-8&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;export <span class="nv">NVM_DIR</span><span class="o">=</span><span class="p">&amp;</span>ldquo<span class="p">;</span><span class="nv">$HOME</span>/.nvm<span class="p">&amp;</span>rdquo<span class="p">;</span>
+</span><span class='line'><span class="o">[</span> -s <span class="p">&amp;</span>ldquo<span class="p">;</span><span class="nv">$NVM_DIR</span>/nvm.sh<span class="p">&amp;</span>rdquo<span class="p">;</span> <span class="o">]</span> <span class="p">&amp;</span>amp<span class="p">;&amp;</span>amp<span class="p">;</span> . <span class="p">&amp;</span>ldquo<span class="p">;</span><span class="nv">$NVM_DIR</span>/nvm.sh<span class="p">&amp;</span>rdquo<span class="p">;</span>  <span class="c"># This loads nvm</span>
+</span><span class='line'><span class="o">[</span> -s <span class="p">&amp;</span>ldquo<span class="p">;</span><span class="nv">$NVM_DIR</span>/bash_completion<span class="p">&amp;</span>rdquo<span class="p">;</span> <span class="o">]</span> <span class="p">&amp;</span>amp<span class="p">;&amp;</span>amp<span class="p">;</span> . <span class="p">&amp;</span>ldquo<span class="p">;</span><span class="nv">$NVM_DIR</span>/bash_completion<span class="p">&amp;</span>rdquo<span class="p">;</span>  <span class="c"># This loads nvm bash_completion&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;eval <span class="p">&amp;</span>ldquo<span class="p">;</span><span class="k">$(</span>rbenv init -<span class="k">)</span><span class="p">&amp;</span>rdquo<span class="p">;</span>
+</span><span class='line'>&lt;code&gt;
+</span><span class='line'>There<span class="err">&#39;</span>s a <span class="nb">time </span>when you accidentally add the result of that <span class="nb">command </span>instead:
+</span><span class='line'>&lt;/code&gt; bash
+</span><span class='line'><span class="nb">export </span><span class="nv">RBENV_SHELL</span><span class="o">=</span>bash
+</span><span class='line'><span class="nb">source</span> <span class="p">&amp;</span>lsquo<span class="p">;</span>/usr/local/Cellar/rbenv/1.1.1/libexec/../completions/rbenv.bash<span class="p">&amp;</span>rsquo<span class="p">;</span>
+</span><span class='line'><span class="nb">command </span>rbenv rehash 2&gt;/dev/null
+</span><span class='line'>rbenv<span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>  <span class="nb">local command</span>
+</span><span class='line'><span class="nb">  command</span><span class="o">=</span><span class="p">&amp;</span>ldquo<span class="p">;</span><span class="nv">$1</span><span class="p">&amp;</span>rdquo<span class="p">;</span>
+</span><span class='line'>  <span class="k">if</span> <span class="o">[</span> <span class="p">&amp;</span>ldquo<span class="p">;</span><span class="nv">$#&amp;</span>rdquo<span class="p">;</span> -gt <span class="m">0</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+</span><span class='line'>    <span class="nb">shift</span>
+</span><span class='line'><span class="nb">  </span><span class="k">fi</span>&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;  <span class="k">case</span> <span class="p">&amp;</span>ldquo<span class="p">;</span><span class="nv">$command</span><span class="p">&amp;</span>rdquo<span class="p">;</span> in
+</span><span class='line'>  rehash<span class="p">|</span>shell<span class="o">)</span>
+</span><span class='line'>    <span class="nb">eval</span> <span class="p">&amp;</span>ldquo<span class="p">;</span><span class="k">$(</span>rbenv <span class="s2">&quot;sh-$command&amp;rdquo; &amp;ldquo;$@&amp;rdquo;)&amp;ldquo;;;</span>
+</span><span class='line'><span class="s2">  *)</span>
+</span><span class='line'><span class="s2">    command rbenv &amp;rdquo;$command&quot;</span> <span class="p">&amp;</span>ldquo<span class="p">;</span><span class="nv">$@</span><span class="p">&amp;</span>rdquo<span class="p">;;;</span>
+</span><span class='line'>  <span class="k">esac</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+If you find that code in your .bash_profile, remove.</p>
+
+<p>Now you need to open new terminal, or you can just open new tab. Command + T is the shortcut. If you don&rsquo;t, your previous setup will not loaded. OK, now install latest Ruby version. Check the available ruby versions, then pick the latest stable release.
+<code>bash
+$ rbenv install --list
+$ rbenv install 2.5.3
+</code>
+Set the latest Ruby version that you&rsquo;ve just download as global version. Or local. But always set it as global.
+<code>bash
+$ rbenv global 2.5.3 # or
+$ rbenv local 2.5.3
+</code>
+Done with the Ruby thing.</p>
+
+<h2>Clone</h2>
+
+
+<p>Make sure you only clone the source branch of the repository.
+<code>bash
+$ git clone -b source https://github.com/setoelkahfi/setoelkahfi.github.io
+$ cd setoelkahfi.github.io
+</code>
+The mistake you always do is to clone the default branch from the repository, which is master. Don&rsquo;t do that. After you move to the cloned directory, then clone the master branch to _deploy folder.
+<code>
+$ git clone https://github.com/setoelkahfi/setoelkahfi.github.io _deploy
+</code>
+After that, you do setup for the project itself. Which include installing bundler and setup github pages.</p>
+
+<pre><code>$ gem install bundler
+$ rbenv rehash
+$ bundle install
+$ rake setup_github_pages
+</code></pre>
+
+<p>If you fail with the rake things, you usually prepend the command with bundle exec.
+<code>
+$ bundle exec rake setup_github_pages
+</code>
+Then you need to enter the name of the repository.
+<code>
+Enter the read/write url for your repository
+(For example, 'git@github.com:your_username/your_username.github.com)
+</code>
+It should done by mow.</p>
+
+<h2>Start Blogging</h2>
+
+
+<p>Then you need to test the actual blogging command. Generate post, preview, deploy. You can always refer to the official documentation of how to blog with Octopress. But here&rsquo;s some commands to get started.</p>
+
+<pre><code>$ bundle exec rake preview # to preview the blog in development server
+$ bundle exec rake new_post["title"] # to make new post
+</code></pre>
+
+<p>That&rsquo;s it for today, Seto. Just remember, everytime you move to a new place, be a nice person as you want your new friends would be. Good luck for the new adventure. Hejdå!</p>
+]]></content>
+  </entry>
+  
+</feed>
