@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Technical | Seto Elkahfi]]></title>
   <link href="http://setoelkahfi.github.io/blog/categories/technical/atom.xml" rel="self"/>
   <link href="http://setoelkahfi.github.io/"/>
-  <updated>2018-11-23T19:31:27+01:00</updated>
+  <updated>2018-11-23T19:34:33+01:00</updated>
   <id>http://setoelkahfi.github.io/</id>
   <author>
     <name><![CDATA[Seto Elkahfi]]></name>
@@ -165,6 +165,20 @@ It should done by mow.</p>
 <pre><code>$ bundle exec rake preview # to preview the blog in development server
 $ bundle exec rake new_post["title"] # to make new post
 </code></pre>
+
+<p>You will likely face difficulty when trying to deploy the blog. So follow this guide below.
+<code>
+rake generate
+rake deploy
+</code>
+This will generate your blog, copy the generated files into _deploy/, add them to git, commit and push them up to the master branch. In a few seconds you should get an email from Github telling you that your commit has been received and will be published on your site.</p>
+
+<p>Don&rsquo;t forget to commit the source for your blog.
+<code>
+git add .
+git commit -m 'your message'
+git push origin source
+</code></p>
 
 <p>That&rsquo;s it for today, Seto. Just remember, everytime you move to a new place, be a nice person as you want your new friends would be. Good luck for the new adventure. Hejdå!</p>
 ]]></content>
