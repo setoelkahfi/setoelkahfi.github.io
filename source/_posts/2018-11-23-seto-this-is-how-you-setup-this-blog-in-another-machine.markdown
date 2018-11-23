@@ -120,4 +120,18 @@ $ bundle exec rake preview # to preview the blog in development server
 $ bundle exec rake new_post["title"] # to make new post
 ```
 
+You will likely face difficulty when trying to deploy the blog. So follow this guide below.
+```
+rake generate
+rake deploy
+```
+This will generate your blog, copy the generated files into _deploy/, add them to git, commit and push them up to the master branch. In a few seconds you should get an email from Github telling you that your commit has been received and will be published on your site.
+
+Don't forget to commit the source for your blog.
+```
+git add .
+git commit -m 'your message'
+git push origin source
+```
+
 That's it for today, Seto. Just remember, everytime you move to a new place, be a nice person as you want your new friends would be. Good luck for the new adventure. Hejdå!
