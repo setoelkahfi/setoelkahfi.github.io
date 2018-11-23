@@ -4,7 +4,7 @@
   <title><![CDATA[Seto Elkahfi]]></title>
   <link href="http://setoelkahfi.github.io/atom.xml" rel="self"/>
   <link href="http://setoelkahfi.github.io/"/>
-  <updated>2018-11-23T19:26:52+01:00</updated>
+  <updated>2018-11-23T19:31:27+01:00</updated>
   <id>http://setoelkahfi.github.io/</id>
   <author>
     <name><![CDATA[Seto Elkahfi]]></name>
@@ -19,6 +19,11 @@
     <updated>2018-11-23T19:21:44+01:00</updated>
     <id>http://setoelkahfi.github.io/blog/2018/11/23/ini-ngetes-lagi</id>
     <content type="html"><![CDATA[<p>Gue mengalami kesulitan dalam hal blogging dengan Octopress ini. Sepertinya gue belum terlalu nerdy, atau hacky. Apapun itu. Tapi sepertinya Octopress ini menarik untuk ngeblog tentang masalah teknikal, karena memang setup nya saja teknikal banget. Well, let&rsquo;s see.</p>
+
+<!-- more -->
+
+
+<p>Next time, I need to learn how to setup this blog in different machine. Or, blogging from 2 machines at the same time. This is another update to test my understanding.</p>
 ]]></content>
   </entry>
   
