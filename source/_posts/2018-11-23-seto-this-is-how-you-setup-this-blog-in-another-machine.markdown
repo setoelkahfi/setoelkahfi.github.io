@@ -119,7 +119,32 @@ Then you need to test the actual blogging command. Generate post, preview, deplo
 $ bundle exec rake preview # to preview the blog in development server
 $ bundle exec rake new_post["title"] # to make new post
 ```
+If you want to workaround with this, you should uninstall rake that doesn't match with the rake in the Gemfile.
 
+```
+$ gem uninstall rake
+
+Select gem to uninstall:
+ 1. rake-10.4.2
+ 2. rake-10.5.0
+ 3. rake-12.3.0
+ 4. All versions
+> 3
+Successfully uninstalled rake-12.3.0
+```
+After that, you can update the rake with this command:
+```
+$ bundle update rake
+```
+though you unsuccessfully update the rake in Gemfile. But now, you should be able to use rake command without prepend it with `bundle exec`.
+
+Always preview the blog before publishing it. Use the preview command and check in your browser on port 4000.
+```
+$ rake preview
+```
+This command will watch for changes in your blog, and regenerate it. You just need to refresh your browser.
+
+<h2>Deploy The Blog, Seto!</h2>
 You will likely face difficulty when trying to deploy the blog. So follow this guide below.
 ```
 rake generate
