@@ -146,11 +146,90 @@ This command will watch for changes in your blog, and regenerate it. You just ne
 
 <h2>Deploy The Blog, Seto!</h2>
 You will likely face difficulty when trying to deploy the blog. So follow this guide below.
+
+This happened when you run `rake setup_github_pages`: your deploy will be rejected because the tip of your current branch is behind. 
+
+```
+## Pushing generated _deploy website
+To https://github.com/setoelkahfi/setoelkahfi.github.io
+ ! [rejected]        master -> master (non-fast-forward)
+error: failed to push some refs to 'https://github.com/setoelkahfi/setoelkahfi.github.io'
+hint: Updates were rejected because the tip of your current branch is behind
+hint: its remote counterpart. Integrate the remote changes (e.g.
+hint: 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+
+## Github Pages deploy complete
+```
+The explanation for this problem is that, `rake setup_github_pages` will remove `_deploy` folder and initiate new repository inside of it. So, it it happened, just remove _deploy folder, and do clone the master branch in it, again. Like so:
+```
+$ rm -rf _deploy/
+$ git clone https://github.com/setoelkahfi/setoelkahfi.github.io _deploy
+
+# You might want to make sure that your local master branch is align with remote master branch by doing this
+$ cd _deploy/
+$ git log
+commit 9663633e98e3b460191150a4cc656e1400acf974 (HEAD -> master, origin/master, origin/HEAD)
+Author: Seto Elkahfi <seto@isolve.se>
+Date:   Fri Nov 23 19:35:52 2018 +0100
+
+    Site updated at 2018-11-23 18:35:52 UTC
+
+commit f1959c62b14065998a4ea7d438576ca57d4e5405
+Author: Seto Elkahfi <seto@isolve.se>
+Date:   Fri Nov 23 19:31:38 2018 +0100
+
+    Site updated at 2018-11-23 18:31:38 UTC
+
+# more commit logs
+```
+After that, `rake deploy` should be executed successfully.
+```
+$ rake deploy
+## Deploying branch to Github Pages 
+## Pulling any updates from Github Pages 
+cd _deploy
+Already up to date.
+cd -
+rm -rf _deploy/index.html
+rm -rf _deploy/images
+rm -rf _deploy/about
+rm -rf _deploy/blog
+rm -rf _deploy/favicon.png
+rm -rf _deploy/atom.xml
+rm -rf _deploy/javascripts
+rm -rf _deploy/sitemap.xml
+rm -rf _deploy/robots.txt
+rm -rf _deploy/assets
+rm -rf _deploy/stylesheets
+
+## Copying public to _deploy
+cp -r public/. _deploy
+cd _deploy
+
+## Committing: Site updated at 2018-11-27 21:01:09 UTC
+[master ec32357] Site updated at 2018-11-27 21:01:09 UTC
+ 6 files changed, 121 insertions(+), 5 deletions(-)
+
+## Pushing generated _deploy website
+Counting objects: 18, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (14/14), done.
+Writing objects: 100% (18/18), 2.93 KiB | 1.46 MiB/s, done.
+Total 18 (delta 8), reused 0 (delta 0)
+remote: Resolving deltas: 100% (8/8), completed with 8 local objects.
+To https://github.com/setoelkahfi/setoelkahfi.github.io
+   9663633..ec32357  master -> master
+
+## Github Pages deploy complete
+cd -
+```
+
 ```
 rake generate
 rake deploy
 ```
-This will generate your blog, copy the generated files into _deploy/, add them to git, commit and push them up to the master branch. In a few seconds you should get an email from Github telling you that your commit has been received and will be published on your site.
+This will generate your blog, copy the generated files into `_deploy/`, add them to git, commit and push them up to the master branch. In a few seconds you should get an email from Github telling you that your commit has been received and will be published on your site.
 
 Don't forget to commit the source for your blog.
 ```
@@ -158,5 +237,9 @@ git add .
 git commit -m 'your message'
 git push origin source
 ```
+
+<h2>Summary</h2>
+<li>You're not working with `master` branch. It is managed by `rake` command.</li>
+<li>If you plan to blog in two machines, always make sure you push all the changes to your `source` and `master` branch.</li>
 
 That's it for today, Seto. Just remember, everytime you move to a new place, be a nice person as you want your new friends would be. Good luck for the new adventure. Hejdå!
