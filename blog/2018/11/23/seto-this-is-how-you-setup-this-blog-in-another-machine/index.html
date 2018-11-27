@@ -326,6 +326,157 @@ And for a matter of fact, you always use rbenv when your new machine is MacBook.
 
 <p>You will likely face difficulty when trying to deploy the blog. So follow this guide below.</p>
 
+<p>This happened when you run <code>rake setup_github_pages</code>: your deploy will be rejected because the tip of your current branch is behind.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="c">## Pushing generated _deploy website</span>
+</span><span class='line'>To https://github.com/setoelkahfi/setoelkahfi.github.io
+</span><span class='line'> ! <span class="o">[</span>rejected<span class="o">]</span>        master -&gt; master <span class="o">(</span>non-fast-forward<span class="o">)</span>
+</span><span class='line'>error: failed to push some refs to <span class="s1">&#39;https://github.com/setoelkahfi/setoelkahfi.github.io&#39;</span>
+</span><span class='line'>hint: Updates were rejected because the tip of your current branch is behind
+</span><span class='line'>hint: its remote counterpart. Integrate the remote changes <span class="o">(</span>e.g.
+</span><span class='line'>hint: <span class="s1">&#39;git pull ...&#39;</span><span class="o">)</span> before pushing again.
+</span><span class='line'>hint: See the <span class="s1">&#39;Note about fast-forwards&#39;</span> in <span class="s1">&#39;git push --help&#39;</span> <span class="k">for</span> details.
+</span><span class='line'>
+</span><span class='line'><span class="c">## Github Pages deploy complete</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The explanation for this problem is that, <code>rake setup_github_pages</code> will remove <code>_deploy</code> folder and initiate new repository inside of it. So, it it happened, just remove _deploy folder, and do clone the master branch in it, again. Like so:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>rm -rf _deploy/
+</span><span class='line'><span class="nv">$ </span>git clone https://github.com/setoelkahfi/setoelkahfi.github.io _deploy
+</span><span class='line'>
+</span><span class='line'><span class="c"># You might want to make sure that your local master branch is align with remote master branch by doing this</span>
+</span><span class='line'><span class="nv">$ </span><span class="nb">cd </span>_deploy/
+</span><span class='line'><span class="nv">$ </span>git log
+</span><span class='line'>commit 9663633e98e3b460191150a4cc656e1400acf974 <span class="o">(</span>HEAD -&gt; master, origin/master, origin/HEAD<span class="o">)</span>
+</span><span class='line'>Author: Seto Elkahfi &lt;seto@isolve.se&gt;
+</span><span class='line'>Date:   Fri Nov <span class="m">23</span> 19:35:52 <span class="m">2018</span> +0100
+</span><span class='line'>
+</span><span class='line'>    Site updated at 2018-11-23 18:35:52 UTC
+</span><span class='line'>
+</span><span class='line'>commit f1959c62b14065998a4ea7d438576ca57d4e5405
+</span><span class='line'>Author: Seto Elkahfi &lt;seto@isolve.se&gt;
+</span><span class='line'>Date:   Fri Nov <span class="m">23</span> 19:31:38 <span class="m">2018</span> +0100
+</span><span class='line'>
+</span><span class='line'>    Site updated at 2018-11-23 18:31:38 UTC
+</span><span class='line'>
+</span><span class='line'><span class="c"># more commit logs</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>After that, <code>rake deploy</code> should be executed successfully.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>rake deploy
+</span><span class='line'><span class="c">## Deploying branch to Github Pages </span>
+</span><span class='line'><span class="c">## Pulling any updates from Github Pages </span>
+</span><span class='line'><span class="nb">cd </span>_deploy
+</span><span class='line'>Already up to date.
+</span><span class='line'><span class="nb">cd</span> -
+</span><span class='line'>rm -rf _deploy/index.html
+</span><span class='line'>rm -rf _deploy/images
+</span><span class='line'>rm -rf _deploy/about
+</span><span class='line'>rm -rf _deploy/blog
+</span><span class='line'>rm -rf _deploy/favicon.png
+</span><span class='line'>rm -rf _deploy/atom.xml
+</span><span class='line'>rm -rf _deploy/javascripts
+</span><span class='line'>rm -rf _deploy/sitemap.xml
+</span><span class='line'>rm -rf _deploy/robots.txt
+</span><span class='line'>rm -rf _deploy/assets
+</span><span class='line'>rm -rf _deploy/stylesheets
+</span><span class='line'>
+</span><span class='line'><span class="c">## Copying public to _deploy</span>
+</span><span class='line'>cp -r public/. _deploy
+</span><span class='line'><span class="nb">cd </span>_deploy
+</span><span class='line'>
+</span><span class='line'><span class="c">## Committing: Site updated at 2018-11-27 21:01:09 UTC</span>
+</span><span class='line'><span class="o">[</span>master ec32357<span class="o">]</span> Site updated at 2018-11-27 21:01:09 UTC
+</span><span class='line'> <span class="m">6</span> files changed, <span class="m">121</span> insertions<span class="o">(</span>+<span class="o">)</span>, <span class="m">5</span> deletions<span class="o">(</span>-<span class="o">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="c">## Pushing generated _deploy website</span>
+</span><span class='line'>Counting objects: 18, <span class="k">done</span>.
+</span><span class='line'>Delta compression using up to <span class="m">4</span> threads.
+</span><span class='line'>Compressing objects: 100% <span class="o">(</span>14/14<span class="o">)</span>, <span class="k">done</span>.
+</span><span class='line'>Writing objects: 100% <span class="o">(</span>18/18<span class="o">)</span>, 2.93 KiB <span class="p">|</span> 1.46 MiB/s, <span class="k">done</span>.
+</span><span class='line'>Total <span class="m">18</span> <span class="o">(</span>delta 8<span class="o">)</span>, reused <span class="m">0</span> <span class="o">(</span>delta 0<span class="o">)</span>
+</span><span class='line'>remote: Resolving deltas: 100% <span class="o">(</span>8/8<span class="o">)</span>, completed with <span class="m">8</span> <span class="nb">local </span>objects.
+</span><span class='line'>To https://github.com/setoelkahfi/setoelkahfi.github.io
+</span><span class='line'>   9663633..ec32357  master -&gt; master
+</span><span class='line'>
+</span><span class='line'><span class="c">## Github Pages deploy complete</span>
+</span><span class='line'><span class="nb">cd</span> -
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 </pre></td><td class='code'><pre><code class='bash'><span class='line'>rake generate
@@ -333,7 +484,7 @@ And for a matter of fact, you always use rbenv when your new machine is MacBook.
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>This will generate your blog, copy the generated files into _deploy/, add them to git, commit and push them up to the master branch. In a few seconds you should get an email from Github telling you that your commit has been received and will be published on your site.</p>
+<p>This will generate your blog, copy the generated files into <code>_deploy/</code>, add them to git, commit and push them up to the master branch. In a few seconds you should get an email from Github telling you that your commit has been received and will be published on your site.</p>
 
 <p>Don&rsquo;t forget to commit the source for your blog.</p>
 
@@ -345,6 +496,14 @@ And for a matter of fact, you always use rbenv when your new machine is MacBook.
 </span><span class='line'>git push origin <span class="nb">source</span>
 </span></code></pre></td></tr></table></div></figure>
 
+
+
+
+<h2>Summary</h2>
+
+
+<p><li>You&rsquo;re not working with <code>master</code> branch. It is managed by <code>rake</code> command.</li>
+<li>If you plan to blog in two machines, always make sure you push all the changes to your <code>source</code> and <code>master</code> branch.</li></p>
 
 <p>That&rsquo;s it for today, Seto. Just remember, everytime you move to a new place, be a nice person as you want your new friends would be. Good luck for the new adventure. Hejdå!</p>
 </div>

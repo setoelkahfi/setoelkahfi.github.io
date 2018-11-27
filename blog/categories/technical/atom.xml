@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Technical | Seto Elkahfi]]></title>
   <link href="http://setoelkahfi.github.io/blog/categories/technical/atom.xml" rel="self"/>
   <link href="http://setoelkahfi.github.io/"/>
-  <updated>2018-11-27T21:33:09+01:00</updated>
+  <updated>2018-11-27T22:28:19+01:00</updated>
   <id>http://setoelkahfi.github.io/</id>
   <author>
     <name><![CDATA[Seto Elkahfi]]></name>
@@ -194,12 +194,172 @@ This command will watch for changes in your blog, and regenerate it. You just ne
 <h2>Deploy The Blog, Seto!</h2>
 
 
-<p>You will likely face difficulty when trying to deploy the blog. So follow this guide below.
-<code>
-rake generate
+<p>You will likely face difficulty when trying to deploy the blog. So follow this guide below.</p>
+
+<p>This happened when you run <code>rake setup_github_pages</code>: your deploy will be rejected because the tip of your current branch is behind.</p>
+
+<pre><code>## Pushing generated _deploy website
+To https://github.com/setoelkahfi/setoelkahfi.github.io
+ ! [rejected]        master -&gt; master (non-fast-forward)
+error: failed to push some refs to 'https://github.com/setoelkahfi/setoelkahfi.github.io'
+hint: Updates were rejected because the tip of your current branch is behind
+hint: its remote counterpart. Integrate the remote changes (e.g.
+hint: 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+
+## Github Pages deploy complete
+</code></pre>
+
+<p>The explanation for this problem is that, <code>rake setup_github_pages</code> will remove <code>_deploy</code> folder and initiate new repository inside of it. So, it it happened, just remove <em>deploy folder, and do clone the master branch in it, again. Like so:
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+<span class='line-number'>51</span>
+<span class='line-number'>52</span>
+<span class='line-number'>53</span>
+<span class='line-number'>54</span>
+<span class='line-number'>55</span>
+<span class='line-number'>56</span>
+<span class='line-number'>57</span>
+<span class='line-number'>58</span>
+<span class='line-number'>59</span>
+<span class='line-number'>60</span>
+<span class='line-number'>61</span>
+<span class='line-number'>62</span>
+<span class='line-number'>63</span>
+<span class='line-number'>64</span>
+<span class='line-number'>65</span>
+<span class='line-number'>66</span>
+<span class='line-number'>67</span>
+<span class='line-number'>68</span>
+<span class='line-number'>69</span>
+<span class='line-number'>70</span>
+<span class='line-number'>71</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>rm -rf &lt;/em&gt;deploy/
+</span><span class='line'><span class="nv">$ </span>git clone &lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&quot;https://github.com/setoelkahfi/setoelkahfi.github.io&quot;</span>&gt;https://github.com/setoelkahfi/setoelkahfi.github.io&lt;/a&gt; _deploy&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;h1&gt;You might want to make sure that your <span class="nb">local </span>master branch is align with remote master branch by doing this&lt;/h1&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;<span class="nv">$ </span><span class="nb">cd </span>_deploy/
+</span><span class='line'><span class="nv">$ </span>git log
+</span><span class='line'>commit 9663633e98e3b460191150a4cc656e1400acf974 <span class="o">(</span>HEAD -&gt; master, origin/master, origin/HEAD<span class="o">)</span>
+</span><span class='line'>Author: Seto Elkahfi &lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&quot;&amp;#x6d;&amp;#x61;&amp;#105;&amp;#x6c;&amp;#116;&amp;#111;&amp;#x3a;&amp;#115;&amp;#x65;&amp;#x74;&amp;#x6f;&amp;#64;&amp;#105;&amp;#115;&amp;#111;&amp;#x6c;&amp;#x76;&amp;#101;&amp;#46;&amp;#115;&amp;#x65;&quot;</span>&gt;<span class="p">&amp;</span><span class="c">#115;&amp;#x65;&amp;#116;&amp;#111;&amp;#64;&amp;#105;&amp;#115;&amp;#111;&amp;#x6c;&amp;#118;&amp;#x65;&amp;#46;&amp;#115;&amp;#x65;&lt;/a&gt;</span>
+</span><span class='line'>Date:   Fri Nov <span class="m">23</span> 19:35:52 <span class="m">2018</span> +0100&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;pre&gt;&lt;code&gt;Site updated at 2018-11-23 18:35:52 UTC
+</span><span class='line'>&lt;/code&gt;&lt;/pre&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;commit f1959c62b14065998a4ea7d438576ca57d4e5405
+</span><span class='line'>Author: Seto Elkahfi &lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&quot;&amp;#109;&amp;#97;&amp;#105;&amp;#x6c;&amp;#116;&amp;#x6f;&amp;#58;&amp;#115;&amp;#x65;&amp;#116;&amp;#111;&amp;#64;&amp;#x69;&amp;#x73;&amp;#x6f;&amp;#x6c;&amp;#118;&amp;#x65;&amp;#x2e;&amp;#115;&amp;#101;&quot;</span>&gt;<span class="p">&amp;</span><span class="c">#x73;&amp;#101;&amp;#116;&amp;#x6f;&amp;#x40;&amp;#105;&amp;#x73;&amp;#x6f;&amp;#108;&amp;#118;&amp;#101;&amp;#x2e;&amp;#115;&amp;#x65;&lt;/a&gt;</span>
+</span><span class='line'>Date:   Fri Nov <span class="m">23</span> 19:31:38 <span class="m">2018</span> +0100&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;pre&gt;&lt;code&gt;Site updated at 2018-11-23 18:31:38 UTC
+</span><span class='line'>&lt;/code&gt;&lt;/pre&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;h1&gt;more commit logs&lt;/h1&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;pre&gt;&lt;code&gt;After that, <span class="sb">`</span>rake deploy<span class="sb">`</span> should be executed successfully.
+</span><span class='line'>&lt;/code&gt;&lt;/pre&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;<span class="nv">$ </span>rake deploy&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;h2&gt;Deploying branch to Github Pages&lt;/h2&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;h2&gt;Pulling any updates from Github Pages&lt;/h2&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;cd &lt;em&gt;deploy
+</span><span class='line'>Already up to date.
+</span><span class='line'><span class="nb">cd</span> -
+</span><span class='line'>rm -rf &lt;/em&gt;deploy/index.html
+</span><span class='line'>rm -rf &lt;em&gt;deploy/images
+</span><span class='line'>rm -rf &lt;/em&gt;deploy/about
+</span><span class='line'>rm -rf &lt;em&gt;deploy/blog
+</span><span class='line'>rm -rf &lt;/em&gt;deploy/favicon.png
+</span><span class='line'>rm -rf &lt;em&gt;deploy/atom.xml
+</span><span class='line'>rm -rf &lt;/em&gt;deploy/javascripts
+</span><span class='line'>rm -rf &lt;em&gt;deploy/sitemap.xml
+</span><span class='line'>rm -rf &lt;/em&gt;deploy/robots.txt
+</span><span class='line'>rm -rf &lt;em&gt;deploy/assets
+</span><span class='line'>rm -rf &lt;/em&gt;deploy/stylesheets&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;h2&gt;Copying public to _deploy&lt;/h2&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;cp -r public/. &lt;em&gt;deploy
+</span><span class='line'><span class="nb">cd</span> &lt;/em&gt;deploy&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;h2&gt;Committing: Site updated at 2018-11-27 21:01:09 UTC&lt;/h2&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;<span class="o">[</span>master ec32357<span class="o">]</span> Site updated at 2018-11-27 21:01:09 UTC
+</span><span class='line'> <span class="m">6</span> files changed, <span class="m">121</span> insertions<span class="o">(</span>+<span class="o">)</span>, <span class="m">5</span> deletions<span class="o">(</span>-<span class="o">)</span>&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;h2&gt;Pushing generated _deploy website&lt;/h2&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;Counting objects: 18, <span class="k">done</span>.
+</span><span class='line'>Delta compression using up to <span class="m">4</span> threads.
+</span><span class='line'>Compressing objects: 100% <span class="o">(</span>14/14<span class="o">)</span>, <span class="k">done</span>.
+</span><span class='line'>Writing objects: 100% <span class="o">(</span>18/18<span class="o">)</span>, 2.93 KiB <span class="p">|</span> 1.46 MiB/s, <span class="k">done</span>.
+</span><span class='line'>Total <span class="m">18</span> <span class="o">(</span>delta 8<span class="o">)</span>, reused <span class="m">0</span> <span class="o">(</span>delta 0<span class="o">)</span>
+</span><span class='line'>remote: Resolving deltas: 100% <span class="o">(</span>8/8<span class="o">)</span>, completed with <span class="m">8</span> <span class="nb">local </span>objects.
+</span><span class='line'>To &lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&quot;https://github.com/setoelkahfi/setoelkahfi.github.io&quot;</span>&gt;https://github.com/setoelkahfi/setoelkahfi.github.io&lt;/a&gt;
+</span><span class='line'>   9663633..ec32357  master -&gt; master&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;h2&gt;Github Pages deploy <span class="nb">complete</span>&lt;/h2&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;cd -
+</span></code></pre></td></tr></table></div></figure></p>
+
+<pre><code>rake generate
 rake deploy
-</code>
-This will generate your blog, copy the generated files into _deploy/, add them to git, commit and push them up to the master branch. In a few seconds you should get an email from Github telling you that your commit has been received and will be published on your site.</p>
+</code></pre>
+
+<p>This will generate your blog, copy the generated files into <code>_deploy/</code>, add them to git, commit and push them up to the master branch. In a few seconds you should get an email from Github telling you that your commit has been received and will be published on your site.</p>
 
 <p>Don&rsquo;t forget to commit the source for your blog.
 <code>
@@ -207,6 +367,12 @@ git add .
 git commit -m 'your message'
 git push origin source
 </code></p>
+
+<h2>Summary</h2>
+
+
+<p><li>You&rsquo;re not working with <code>master</code> branch. It is managed by <code>rake</code> command.</li>
+<li>If you plan to blog in two machines, always make sure you push all the changes to your <code>source</code> and <code>master</code> branch.</li></p>
 
 <p>That&rsquo;s it for today, Seto. Just remember, everytime you move to a new place, be a nice person as you want your new friends would be. Good luck for the new adventure. Hejdå!</p>
 ]]></content>
