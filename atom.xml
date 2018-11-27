@@ -4,7 +4,7 @@
   <title><![CDATA[Seto Elkahfi]]></title>
   <link href="http://setoelkahfi.github.io/atom.xml" rel="self"/>
   <link href="http://setoelkahfi.github.io/"/>
-  <updated>2018-11-23T19:34:33+01:00</updated>
+  <updated>2018-11-27T21:33:09+01:00</updated>
   <id>http://setoelkahfi.github.io/</id>
   <author>
     <name><![CDATA[Seto Elkahfi]]></name>
@@ -225,6 +225,50 @@ And for a matter of fact, you always use rbenv when your new machine is MacBook.
 </pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>bundle <span class="nb">exec </span>rake preview <span class="c"># to preview the blog in development server</span>
 </span><span class='line'><span class="nv">$ </span>bundle <span class="nb">exec </span>rake new_post<span class="o">[</span><span class="s2">&quot;title&quot;</span><span class="o">]</span> <span class="c"># to make new post</span>
 </span></code></pre></td></tr></table></div></figure>
+
+
+<p>If you want to workaround with this, you should uninstall rake that doesn&rsquo;t match with the rake in the Gemfile.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>gem uninstall rake
+</span><span class='line'>
+</span><span class='line'>Select gem to uninstall:
+</span><span class='line'> 1. rake-10.4.2
+</span><span class='line'> 2. rake-10.5.0
+</span><span class='line'> 3. rake-12.3.0
+</span><span class='line'> 4. All versions
+</span><span class='line'>&gt; 3
+</span><span class='line'>Successfully uninstalled rake-12.3.0
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>After that, you can update the rake with this command:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>bundle update rake
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>though you unsuccessfully update the rake in Gemfile. But now, you should be able to use rake command without prepend it with <code>bundle exec</code>.</p>
+
+<p>Always preview the blog before publishing it. Use the preview command and check in your browser on port 4000.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>rake preview
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>This command will watch for changes in your blog, and regenerate it. You just need to refresh your browser.</p>
+
+<h2>Deploy The Blog, Seto!</h2>
 
 
 <p>You will likely face difficulty when trying to deploy the blog. So follow this guide below.</p>

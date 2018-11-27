@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Technical | Seto Elkahfi]]></title>
   <link href="http://setoelkahfi.github.io/blog/categories/technical/atom.xml" rel="self"/>
   <link href="http://setoelkahfi.github.io/"/>
-  <updated>2018-11-23T19:34:33+01:00</updated>
+  <updated>2018-11-27T21:33:09+01:00</updated>
   <id>http://setoelkahfi.github.io/</id>
   <author>
     <name><![CDATA[Seto Elkahfi]]></name>
@@ -165,6 +165,34 @@ It should done by mow.</p>
 <pre><code>$ bundle exec rake preview # to preview the blog in development server
 $ bundle exec rake new_post["title"] # to make new post
 </code></pre>
+
+<p>If you want to workaround with this, you should uninstall rake that doesn&rsquo;t match with the rake in the Gemfile.</p>
+
+<pre><code>$ gem uninstall rake
+
+Select gem to uninstall:
+ 1. rake-10.4.2
+ 2. rake-10.5.0
+ 3. rake-12.3.0
+ 4. All versions
+&gt; 3
+Successfully uninstalled rake-12.3.0
+</code></pre>
+
+<p>After that, you can update the rake with this command:
+<code>
+$ bundle update rake
+</code>
+though you unsuccessfully update the rake in Gemfile. But now, you should be able to use rake command without prepend it with <code>bundle exec</code>.</p>
+
+<p>Always preview the blog before publishing it. Use the preview command and check in your browser on port 4000.
+<code>
+$ rake preview
+</code>
+This command will watch for changes in your blog, and regenerate it. You just need to refresh your browser.</p>
+
+<h2>Deploy The Blog, Seto!</h2>
+
 
 <p>You will likely face difficulty when trying to deploy the blog. So follow this guide below.
 <code>
