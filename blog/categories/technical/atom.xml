@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Technical | Seto Elkahfi]]></title>
   <link href="http://setoelkahfi.github.io/blog/categories/technical/atom.xml" rel="self"/>
   <link href="http://setoelkahfi.github.io/"/>
-  <updated>2018-11-27T22:28:19+01:00</updated>
+  <updated>2018-11-27T23:01:39+01:00</updated>
   <id>http://setoelkahfi.github.io/</id>
   <author>
     <name><![CDATA[Seto Elkahfi]]></name>
@@ -290,14 +290,14 @@ hint: See the 'Note about fast-forwards' in 'git push --help' for details.
 </span><span class='line'>&lt;p&gt;<span class="nv">$ </span><span class="nb">cd </span>_deploy/
 </span><span class='line'><span class="nv">$ </span>git log
 </span><span class='line'>commit 9663633e98e3b460191150a4cc656e1400acf974 <span class="o">(</span>HEAD -&gt; master, origin/master, origin/HEAD<span class="o">)</span>
-</span><span class='line'>Author: Seto Elkahfi &lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&quot;&amp;#x6d;&amp;#x61;&amp;#105;&amp;#x6c;&amp;#116;&amp;#111;&amp;#x3a;&amp;#115;&amp;#x65;&amp;#x74;&amp;#x6f;&amp;#64;&amp;#105;&amp;#115;&amp;#111;&amp;#x6c;&amp;#x76;&amp;#101;&amp;#46;&amp;#115;&amp;#x65;&quot;</span>&gt;<span class="p">&amp;</span><span class="c">#115;&amp;#x65;&amp;#116;&amp;#111;&amp;#64;&amp;#105;&amp;#115;&amp;#111;&amp;#x6c;&amp;#118;&amp;#x65;&amp;#46;&amp;#115;&amp;#x65;&lt;/a&gt;</span>
+</span><span class='line'>Author: Seto Elkahfi &lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&quot;&amp;#x6d;&amp;#97;&amp;#105;&amp;#x6c;&amp;#116;&amp;#111;&amp;#x3a;&amp;#x73;&amp;#101;&amp;#x74;&amp;#x6f;&amp;#64;&amp;#x69;&amp;#x73;&amp;#x6f;&amp;#108;&amp;#x76;&amp;#101;&amp;#46;&amp;#115;&amp;#101;&quot;</span>&gt;<span class="p">&amp;</span><span class="c">#x73;&amp;#x65;&amp;#x74;&amp;#x6f;&amp;#x40;&amp;#105;&amp;#115;&amp;#x6f;&amp;#x6c;&amp;#x76;&amp;#101;&amp;#x2e;&amp;#x73;&amp;#x65;&lt;/a&gt;</span>
 </span><span class='line'>Date:   Fri Nov <span class="m">23</span> 19:35:52 <span class="m">2018</span> +0100&lt;/p&gt;
 </span><span class='line'>
 </span><span class='line'>&lt;pre&gt;&lt;code&gt;Site updated at 2018-11-23 18:35:52 UTC
 </span><span class='line'>&lt;/code&gt;&lt;/pre&gt;
 </span><span class='line'>
 </span><span class='line'>&lt;p&gt;commit f1959c62b14065998a4ea7d438576ca57d4e5405
-</span><span class='line'>Author: Seto Elkahfi &lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&quot;&amp;#109;&amp;#97;&amp;#105;&amp;#x6c;&amp;#116;&amp;#x6f;&amp;#58;&amp;#115;&amp;#x65;&amp;#116;&amp;#111;&amp;#64;&amp;#x69;&amp;#x73;&amp;#x6f;&amp;#x6c;&amp;#118;&amp;#x65;&amp;#x2e;&amp;#115;&amp;#101;&quot;</span>&gt;<span class="p">&amp;</span><span class="c">#x73;&amp;#101;&amp;#116;&amp;#x6f;&amp;#x40;&amp;#105;&amp;#x73;&amp;#x6f;&amp;#108;&amp;#118;&amp;#101;&amp;#x2e;&amp;#115;&amp;#x65;&lt;/a&gt;</span>
+</span><span class='line'>Author: Seto Elkahfi &lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&quot;&amp;#109;&amp;#x61;&amp;#x69;&amp;#x6c;&amp;#116;&amp;#111;&amp;#x3a;&amp;#115;&amp;#x65;&amp;#116;&amp;#111;&amp;#64;&amp;#x69;&amp;#115;&amp;#111;&amp;#x6c;&amp;#x76;&amp;#101;&amp;#x2e;&amp;#115;&amp;#x65;&quot;</span>&gt;<span class="p">&amp;</span><span class="c">#115;&amp;#101;&amp;#x74;&amp;#x6f;&amp;#x40;&amp;#105;&amp;#115;&amp;#x6f;&amp;#x6c;&amp;#x76;&amp;#x65;&amp;#x2e;&amp;#115;&amp;#101;&lt;/a&gt;</span>
 </span><span class='line'>Date:   Fri Nov <span class="m">23</span> 19:31:38 <span class="m">2018</span> +0100&lt;/p&gt;
 </span><span class='line'>
 </span><span class='line'>&lt;pre&gt;&lt;code&gt;Site updated at 2018-11-23 18:31:38 UTC

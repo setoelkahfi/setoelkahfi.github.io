@@ -4,7 +4,7 @@
   <title><![CDATA[Seto Elkahfi]]></title>
   <link href="http://setoelkahfi.github.io/atom.xml" rel="self"/>
   <link href="http://setoelkahfi.github.io/"/>
-  <updated>2018-11-27T22:28:19+01:00</updated>
+  <updated>2018-11-27T23:01:39+01:00</updated>
   <id>http://setoelkahfi.github.io/</id>
   <author>
     <name><![CDATA[Seto Elkahfi]]></name>
@@ -12,6 +12,35 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[It Is Important That You Know That You Know Nothing and You Document Your Stupidity]]></title>
+    <link href="http://setoelkahfi.github.io/blog/2018/11/27/it-is-important-that-you-know-that-you-know-nothing-and-you-document-your-stupidity/"/>
+    <updated>2018-11-27T22:41:28+01:00</updated>
+    <id>http://setoelkahfi.github.io/blog/2018/11/27/it-is-important-that-you-know-that-you-know-nothing-and-you-document-your-stupidity</id>
+    <content type="html"><![CDATA[<p>In this last week, I tried hard to understand the Octopress blogging platform. It&rsquo;s the platform that powered this blog. I tried so hard to understand the concept. And after so many trials and errors, I (maybe, am I?) finally understand how it works under the hood. It should be simple and easier concept for you smart developers, but I just realize that I&rsquo;m not that smart.</p>
+
+<!-- more -->
+
+
+<h2>The Enlightenment</h2>
+
+
+<p><span class='pullquote-right' data-pullquote='It can be a stupid Stackoverlow question, a meaningless GitHub repository, or an advance blogging platform.'>
+So, realizing that I&rsquo;m not so smart is an important step for me. That enables me to always try to document my stupidity. It can be a stupid Stackoverlow question, a meaningless GitHub repository, or an advance blogging platform. I&rsquo;m glad that I realize it and act based on it. My future self should thank my current version.
+</span></p>
+
+<p>Now, I will try to routinely blogging technical stuffs in this blog. This is my way to separate different type of writings I conduct in other platform. Like, Wordpress.com for example. That&rsquo;s my very first blogging experience. I wrote mostly about daily life, in my native language, Indonesian. I also have blogspot blog, which I used to blog about technical stuffs in Indonesian as well. And off course other social channels, which also kind of micro blogging platform, because I also need to write something, at least.</p>
+
+<h2>The Future Plan</h2>
+
+
+<p>I&rsquo;ll try to make all my writings as neat as possible. Maybe, in the future, I will make a single platform (possibly my dot com domain), that integrate all my digital footprints. Maybe I&rsquo;ll regret it, that I produce so many data in my life. Maybe I&rsquo;ll glad that I&rsquo;m doing it. Who knows.</p>
+
+<blockquote><p></p><footer><strong>I know nothing.</strong></footer></blockquote>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Ini Ngetes Lagi]]></title>
