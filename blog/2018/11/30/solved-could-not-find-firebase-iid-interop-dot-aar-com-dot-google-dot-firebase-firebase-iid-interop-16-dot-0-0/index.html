@@ -1,0 +1,262 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>[SOLVED] Could Not Find firebase-iid-interop.aar (com.google.firebase:firebase-iid-interop:16.0.0). - Seto Elkahfi</title>
+  <meta name="author" content="Seto Elkahfi">
+
+  
+  <meta name="description" content="In this my first work in Sweden, I was applying for iOS developer role. With my strong selling points were I&rsquo;ve been developing iOS application &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://setoelkahfi.github.io/blog/2018/11/30/solved-could-not-find-firebase-iid-interop-dot-aar-com-dot-google-dot-firebase-firebase-iid-interop-16-dot-0-0/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Seto Elkahfi" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="/javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Seto Elkahfi</a></h1>
+  
+    <h2>on software engineering.</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="https://www.google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="sitesearch" value="setoelkahfi.github.io">
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/about">About</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">[SOLVED] Could Not Find firebase-iid-interop.aar (com.google.firebase:firebase-iid-interop:16.0.0).</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2018-11-30T11:59:41+01:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>30</span><span class='date-suffix'>th</span>, <span class='date-year'>2018</span></span> <span class='time'>11:59 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>In this my first work in Sweden, I was applying for iOS developer role. With my strong selling points were I&rsquo;ve been developing iOS application for almost 3 years, showed my then potential employer all the projects that I&rsquo;ve involved in (3 iOS apps, 3 websites, and I mentioned Android app, but couldn&rsquo;t showed it to them because I&rsquo;m using iPhone now), and my preference is Swift other than Objective-C. But, in this second week of my work, I&rsquo;ve already touch our Android codebase, take a look at our web admin project which is written in AngularJS, and our iOS codebase is written in Objective-C. I couldn&rsquo;t excited more :).</p>
+
+<p>Now, let&rsquo;s back to what I&rsquo;m going to write.</p>
+
+<!-- more -->
+
+
+
+
+<h2>Android Project With Multiple Build Variants</h2>
+
+
+<p>When I was setting up the Android project, I face this simple issue. I said simple because it is. Our Android project has multiple build variants. Meaning, it has different build flavours. Each client has its own build flavor. And each build type defines environment of the app: which back end it communicates to. Oh, this is for our old app system, which is in the same project for our upcoming new app system, but in different branch.</p>
+
+<p>So, here&rsquo;s the error message when I try to build the project in Android Studio:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>Could not find firebase-iid-interop.aar <span class="o">(</span>com.google.firebase:firebase-iid-interop:16.0.0<span class="o">)</span>.
+</span><span class='line'>Searched in the following locations:
+</span><span class='line'>    https://jcenter.bintray.com/com/google/firebase/firebase-iid-interop/16.0.0/firebase-iid-interop-16.0.0.aar
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>This is happened because Google removed their projects from <code>jcenter</code>, but erroneously left some artifacts with dependencies [1].</p>
+
+<h2>Simple Solution</h2>
+
+
+<p>You need to put <code>google()</code> repository BEFORE <code>jcenter()</code> [1] like so:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>allprojects <span class="o">{</span>
+</span><span class='line'>    repositories <span class="o">{</span>
+</span><span class='line'>        jcenter<span class="o">()</span>
+</span><span class='line'>        maven <span class="o">{</span>
+</span><span class='line'>            url <span class="s2">&quot;https://maven.google.com&quot;</span>
+</span><span class='line'>        <span class="o">}</span>
+</span><span class='line'>        google<span class="o">()</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>And because each build variant has its own gradle file, I need to edit the root gradle file. Also, you need to pay attention to which repositories section you need to edit. Make sure its <code>allprojects.repositories</code> section, not the <code>buildscript.repositories</code> section [2].</p>
+
+<p>And that&rsquo;s it. I tried to clean up the project, and then rebuild again, and viola! It works.</p>
+
+<p>[1] <a href="https://stackoverflow.com/a/53158506/1137814">https://stackoverflow.com/a/53158506/1137814</a></br>
+[2] <a href="https://github.com/geektimecoil/react-native-onesignal/issues/552#issuecomment-433077966">https://github.com/geektimecoil/react-native-onesignal/issues/552#issuecomment-433077966</a></p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Seto Elkahfi</span></span>
+
+      
+
+
+
+
+<time class='entry-date' datetime='2018-11-30T11:59:41+01:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>30</span><span class='date-suffix'>th</span>, <span class='date-year'>2018</span></span> <span class='time'>11:59 am</span></time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/android-development/'>android development</a>, <a class='category' href='/blog/categories/technical/'>technical</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://setoelkahfi.github.io/blog/2018/11/30/solved-could-not-find-firebase-iid-interop-dot-aar-com-dot-google-dot-firebase-firebase-iid-interop-16-dot-0-0/" data-via="" data-counturl="http://setoelkahfi.github.io/blog/2018/11/30/solved-could-not-find-firebase-iid-interop-dot-aar-com-dot-google-dot-firebase-firebase-iid-interop-16-dot-0-0/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2018/11/27/it-is-important-that-you-know-that-you-know-nothing-and-you-document-your-stupidity/" title="Previous Post: It Is Important That You Know That You Know Nothing And You Document Your Stupidity">&laquo; It Is Important That You Know That You Know Nothing And You Document Your Stupidity</a>
+      
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2018/11/30/solved-could-not-find-firebase-iid-interop-dot-aar-com-dot-google-dot-firebase-firebase-iid-interop-16-dot-0-0/">[SOLVED] Could Not Find firebase-iid-interop.aar (com.google.firebase:firebase-iid-interop:16.0.0).</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2018/11/27/it-is-important-that-you-know-that-you-know-nothing-and-you-document-your-stupidity/">It Is Important That You Know That You Know Nothing and You Document Your Stupidity</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2018/11/23/ini-ngetes-lagi/">Ini Ngetes Lagi</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2018/11/23/seto-this-is-how-you-setup-this-blog-in-another-machine/">Seto, This Is How You Setup This Blog in Another Machine</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/08/01/the-spirit-for-learning/">The Spirit for Learning</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2018 - Seto Elkahfi -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

@@ -4,7 +4,7 @@
   <title><![CDATA[Seto Elkahfi]]></title>
   <link href="http://setoelkahfi.github.io/atom.xml" rel="self"/>
   <link href="http://setoelkahfi.github.io/"/>
-  <updated>2018-11-27T23:01:39+01:00</updated>
+  <updated>2018-11-30T12:53:28+01:00</updated>
   <id>http://setoelkahfi.github.io/</id>
   <author>
     <name><![CDATA[Seto Elkahfi]]></name>
@@ -12,6 +12,73 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[[SOLVED] Could Not Find firebase-iid-interop.aar (com.google.firebase:firebase-iid-interop:16.0.0).]]></title>
+    <link href="http://setoelkahfi.github.io/blog/2018/11/30/solved-could-not-find-firebase-iid-interop-dot-aar-com-dot-google-dot-firebase-firebase-iid-interop-16-dot-0-0/"/>
+    <updated>2018-11-30T11:59:41+01:00</updated>
+    <id>http://setoelkahfi.github.io/blog/2018/11/30/solved-could-not-find-firebase-iid-interop-dot-aar-com-dot-google-dot-firebase-firebase-iid-interop-16-dot-0-0</id>
+    <content type="html"><![CDATA[<p>In this my first work in Sweden, I was applying for iOS developer role. With my strong selling points were I&rsquo;ve been developing iOS application for almost 3 years, showed my then potential employer all the projects that I&rsquo;ve involved in (3 iOS apps, 3 websites, and I mentioned Android app, but couldn&rsquo;t showed it to them because I&rsquo;m using iPhone now), and my preference is Swift other than Objective-C. But, in this second week of my work, I&rsquo;ve already touch our Android codebase, take a look at our web admin project which is written in AngularJS, and our iOS codebase is written in Objective-C. I couldn&rsquo;t excited more :).</p>
+
+<p>Now, let&rsquo;s back to what I&rsquo;m going to write.</p>
+
+<!-- more -->
+
+
+
+
+<h2>Android Project With Multiple Build Variants</h2>
+
+
+<p>When I was setting up the Android project, I face this simple issue. I said simple because it is. Our Android project has multiple build variants. Meaning, it has different build flavours. Each client has its own build flavor. And each build type defines environment of the app: which back end it communicates to. Oh, this is for our old app system, which is in the same project for our upcoming new app system, but in different branch.</p>
+
+<p>So, here&rsquo;s the error message when I try to build the project in Android Studio:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>Could not find firebase-iid-interop.aar <span class="o">(</span>com.google.firebase:firebase-iid-interop:16.0.0<span class="o">)</span>.
+</span><span class='line'>Searched in the following locations:
+</span><span class='line'>    https://jcenter.bintray.com/com/google/firebase/firebase-iid-interop/16.0.0/firebase-iid-interop-16.0.0.aar
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>This is happened because Google removed their projects from <code>jcenter</code>, but erroneously left some artifacts with dependencies [1].</p>
+
+<h2>Simple Solution</h2>
+
+
+<p>You need to put <code>google()</code> repository BEFORE <code>jcenter()</code> [1] like so:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>allprojects <span class="o">{</span>
+</span><span class='line'>    repositories <span class="o">{</span>
+</span><span class='line'>        jcenter<span class="o">()</span>
+</span><span class='line'>        maven <span class="o">{</span>
+</span><span class='line'>            url <span class="s2">&quot;https://maven.google.com&quot;</span>
+</span><span class='line'>        <span class="o">}</span>
+</span><span class='line'>        google<span class="o">()</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>And because each build variant has its own gradle file, I need to edit the root gradle file. Also, you need to pay attention to which repositories section you need to edit. Make sure its <code>allprojects.repositories</code> section, not the <code>buildscript.repositories</code> section [2].</p>
+
+<p>And that&rsquo;s it. I tried to clean up the project, and then rebuild again, and viola! It works.</p>
+
+<p>[1] <a href="https://stackoverflow.com/a/53158506/1137814">https://stackoverflow.com/a/53158506/1137814</a></br>
+[2] <a href="https://github.com/geektimecoil/react-native-onesignal/issues/552#issuecomment-433077966">https://github.com/geektimecoil/react-native-onesignal/issues/552#issuecomment-433077966</a></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[It Is Important That You Know That You Know Nothing and You Document Your Stupidity]]></title>
