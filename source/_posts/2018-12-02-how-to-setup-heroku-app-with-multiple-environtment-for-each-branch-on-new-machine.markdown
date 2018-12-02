@@ -52,9 +52,9 @@ remote: Total 4 (delta 0), reused 3 (delta 0)
 Unpacking objects: 100% (4/4), done.
 From https://git.heroku.com/mycoolapp
  * [new branch]      master     -> production/master
- ```
+```
 
- Now is a bit tricky but should be understandable. Make sure local `master` branch track `production/master` and local `staging` branch tracks `staging/master`.
+Now is a bit tricky but should be understandable. Make sure local `master` branch track `production/master` and local `staging` branch tracks `staging/master`.
 
 ``` bash
 $ git checkout -b staging staging/master
@@ -63,6 +63,6 @@ Switched to a new branch 'staging'
 $ git checkout -b master production/master
 Branch 'master' set up to track remote branch 'master' from 'production'.
 Switched to a new branch 'master'
-````
+```
 
 Easy breezy lemon squeezy, eller hur? Hejdå!
