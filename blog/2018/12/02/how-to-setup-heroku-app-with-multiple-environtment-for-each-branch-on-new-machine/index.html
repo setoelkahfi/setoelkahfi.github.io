@@ -1,0 +1,314 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>How to Setup Heroku App With Multiple Environtment for Each Branch on New Machine - Seto Elkahfi</title>
+  <meta name="author" content="Seto Elkahfi">
+
+  
+  <meta name="description" content="Recently, I want to migrate my side project into another domain. This project is hosted in Heroku. I really like the concept of push-to-deploy that &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://setoelkahfi.github.io/blog/2018/12/02/how-to-setup-heroku-app-with-multiple-environtment-for-each-branch-on-new-machine/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Seto Elkahfi" type="application/atom+xml">
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-54270133-6"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-54270133-6');
+  </script>
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="/javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.css" />
+  <script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js"></script>
+  <script>
+  window.addEventListener("load", function(){
+  window.cookieconsent.initialise({
+    "palette": {
+      "popup": {
+        "background": "#006aa7"
+      },
+      "button": {
+        "background": "#fecc00",
+        "text": "#006aa7"
+      }
+    },
+    "position": "bottom-right"
+  })});
+  </script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Seto Elkahfi</a></h1>
+  
+    <h2>on software engineering.</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="https://www.google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="sitesearch" value="setoelkahfi.github.io">
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/about">About</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">How to Setup Heroku App With Multiple Environtment for Each Branch on New Machine</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2018-12-02T02:57:34+01:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>2</span><span class='date-suffix'>nd</span>, <span class='date-year'>2018</span></span> <span class='time'>2:57 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>Recently, I want to migrate my side project into another domain. This project is hosted in Heroku. I really like the concept of push-to-deploy that Heroku good at. It frees me of server-management thingy. And, I feel so geeky whenever I use git from command line, hahaha. Ok, let me explain the state of the app.</p>
+
+<!-- more -->
+
+
+
+
+<h2>Application Environment in Heroku Platform</h2>
+
+
+<p>The app has two different environment: <code>staging</code> and <code>production</code>. I think the names are self explanatory, otherwise you do not have enough experience in developing software. Each environment will point to different branch in developer local machine. The staging environment itself is pointing to development branch. At least in my local machine. My first local machine that I use originally for this project. The production environment is pointing to master branch in local repo. I know it sounds confusing. Because it really is. And that confusion slapped my face hardly when I try to rename my app in order to migrate the domain.</p>
+
+<p><span class='pullquote-right' data-pullquote='which make me even confuse and question my existence'>
+So, each application in Heroku will has its own repository. In my case, staging app will have repo name with -staging in it. The production app simply the name itself, without prefix or suffix. At first, I naievely clone each app in different local repo, which make me even confuse and question my existence. So if I have two repos, I need to work in two different place? Hell no. That&rsquo;s the wrong way, Seto.
+</span></p>
+
+<h2>The Right Way (Really?)</h2>
+
+
+<p>The right way, it turns out, is to only clone the staging app. Why? Because it contains all the commit before merging them to the production branch: <code>master</code> local branch. I mean remote production branch. I mean, what??? Anyway, just continue the reading.</p>
+
+<p>After you clone the <code>staging</code> repo, automatically you&rsquo;ll get heroku remote. Oh no, that&rsquo;s when you use heroku command <code>heroku git:clone -a [app name]</code>. Otherwise, I think you&rsquo;ll get <code>origin</code> as remote name. Check it.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>git remote -v
+</span><span class='line'>heroku    https://git.heroku.com/mycoolapp-staging.git <span class="o">(</span>fetch<span class="o">)</span>
+</span><span class='line'>heroku    https://git.heroku.com/mycoolapp-staging.git <span class="o">(</span>push<span class="o">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>You want to make naming remotes and branches reflect to the environment and how you&rsquo;ll work. So, change the remote name into staging, the same name as the application environment it listed as the git repository.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>git remote rename heroku staging
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>And the next step is to add <code>production</code> app as <code>production</code> remote with the magic of git. Now I&rsquo;m arguing my opinion to name the remote the sama with the app&rsquo;s environment. So <code>production</code> remote is <code>production</code> app and <code>staging</code> remote is <code>staging</code> app? <em>mikir</em></p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>git remote add production https://git.heroku.com/mycoolapp.git
+</span><span class='line'><span class="nv">$ </span>git remote -v
+</span><span class='line'>production    https://git.heroku.com/mycoolapp.git <span class="o">(</span>fetch<span class="o">)</span>
+</span><span class='line'>production    https://git.heroku.com/mycoolapp.git <span class="o">(</span>push<span class="o">)</span>
+</span><span class='line'>staging   https://git.heroku.com/mycoolapp-staging.git <span class="o">(</span>fetch<span class="o">)</span>
+</span><span class='line'>staging   https://git.heroku.com/mycoolapp-staging.git <span class="o">(</span>push<span class="o">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>And then, you  need to fetch each remote like so:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>git fetch production
+</span><span class='line'>remote: Counting objects: 4, <span class="k">done</span>.
+</span><span class='line'>remote: Compressing objects: 100% <span class="o">(</span>4/4<span class="o">)</span>, <span class="k">done</span>.
+</span><span class='line'>remote: Total <span class="m">4</span> <span class="o">(</span>delta 0<span class="o">)</span>, reused <span class="m">3</span> <span class="o">(</span>delta 0<span class="o">)</span>
+</span><span class='line'>Unpacking objects: 100% <span class="o">(</span>4/4<span class="o">)</span>, <span class="k">done</span>.
+</span><span class='line'>From https://git.heroku.com/mycoolapp
+</span><span class='line'> * <span class="o">[</span>new branch<span class="o">]</span>      master     -&gt; production/master
+</span><span class='line'> <span class="sb">```</span>
+</span><span class='line'>
+</span><span class='line'> Now is a bit tricky but should be understandable. Make sure <span class="nb">local</span> <span class="sb">`</span>master<span class="sb">`</span> branch track <span class="sb">`</span>production/master<span class="sb">`</span> and <span class="nb">local</span> <span class="sb">`</span>staging<span class="sb">`</span> branch tracks <span class="sb">`</span>staging/master<span class="sb">`</span>.
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p> bash
+$ git checkout -b staging staging/master
+Branch &lsquo;staging&rsquo; set up to track remote branch &lsquo;master&rsquo; from &lsquo;staging&rsquo;.
+Switched to a new branch &lsquo;staging&rsquo;
+$ git checkout -b master production/master
+Branch &lsquo;master&rsquo; set up to track remote branch &lsquo;master&rsquo; from &lsquo;production&rsquo;.
+Switched to a new branch &lsquo;master&rsquo;
+&#8220;&#8220;</p>
+
+<p>Easy breezy lemon squeezy, eller hur? Hejdå!</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Seto Elkahfi</span></span>
+
+      
+
+
+
+
+<time class='entry-date' datetime='2018-12-02T02:57:34+01:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>2</span><span class='date-suffix'>nd</span>, <span class='date-year'>2018</span></span> <span class='time'>2:57 am</span></time>
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://setoelkahfi.github.io/blog/2018/12/02/how-to-setup-heroku-app-with-multiple-environtment-for-each-branch-on-new-machine/" data-via="" data-counturl="http://setoelkahfi.github.io/blog/2018/12/02/how-to-setup-heroku-app-with-multiple-environtment-for-each-branch-on-new-machine/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2018/11/30/solved-could-not-find-firebase-iid-interop-dot-aar-com-dot-google-dot-firebase-firebase-iid-interop-16-dot-0-0/" title="Previous Post: [SOLVED] Could not find firebase-iid-interop.aar (com.google.firebase:firebase-iid-interop:16.0.0).">&laquo; [SOLVED] Could not find firebase-iid-interop.aar (com.google.firebase:firebase-iid-interop:16.0.0).</a>
+      
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2018/12/02/how-to-setup-heroku-app-with-multiple-environtment-for-each-branch-on-new-machine/">How to Setup Heroku App With Multiple Environtment for Each Branch on New Machine</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2018/11/30/solved-could-not-find-firebase-iid-interop-dot-aar-com-dot-google-dot-firebase-firebase-iid-interop-16-dot-0-0/">[SOLVED] Could Not Find firebase-iid-interop.aar (com.google.firebase:firebase-iid-interop:16.0.0).</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2018/11/27/it-is-important-that-you-know-that-you-know-nothing-and-you-document-your-stupidity/">It Is Important That You Know That You Know Nothing and You Document Your Stupidity</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2018/11/23/ini-ngetes-lagi/">Ini Ngetes Lagi</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2018/11/23/seto-this-is-how-you-setup-this-blog-in-another-machine/">Seto, This Is How You Setup This Blog in Another Machine</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2018 - Seto Elkahfi -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>
