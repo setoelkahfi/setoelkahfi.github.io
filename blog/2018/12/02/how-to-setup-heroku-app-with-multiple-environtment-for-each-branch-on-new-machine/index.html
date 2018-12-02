@@ -176,9 +176,6 @@ So, each application in Heroku will has its own repository. In my case, staging 
 <span class='line-number'>5</span>
 <span class='line-number'>6</span>
 <span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
 </pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>git fetch production
 </span><span class='line'>remote: Counting objects: 4, <span class="k">done</span>.
 </span><span class='line'>remote: Compressing objects: 100% <span class="o">(</span>4/4<span class="o">)</span>, <span class="k">done</span>.
@@ -186,20 +183,25 @@ So, each application in Heroku will has its own repository. In my case, staging 
 </span><span class='line'>Unpacking objects: 100% <span class="o">(</span>4/4<span class="o">)</span>, <span class="k">done</span>.
 </span><span class='line'>From https://git.heroku.com/mycoolapp
 </span><span class='line'> * <span class="o">[</span>new branch<span class="o">]</span>      master     -&gt; production/master
-</span><span class='line'> <span class="sb">```</span>
-</span><span class='line'>
-</span><span class='line'> Now is a bit tricky but should be understandable. Make sure <span class="nb">local</span> <span class="sb">`</span>master<span class="sb">`</span> branch track <span class="sb">`</span>production/master<span class="sb">`</span> and <span class="nb">local</span> <span class="sb">`</span>staging<span class="sb">`</span> branch tracks <span class="sb">`</span>staging/master<span class="sb">`</span>.
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p> bash
-$ git checkout -b staging staging/master
-Branch &lsquo;staging&rsquo; set up to track remote branch &lsquo;master&rsquo; from &lsquo;staging&rsquo;.
-Switched to a new branch &lsquo;staging&rsquo;
-$ git checkout -b master production/master
-Branch &lsquo;master&rsquo; set up to track remote branch &lsquo;master&rsquo; from &lsquo;production&rsquo;.
-Switched to a new branch &lsquo;master&rsquo;
-&#8220;&#8220;</p>
+<p>Now is a bit tricky but should be understandable. Make sure local <code>master</code> branch track <code>production/master</code> and local <code>staging</code> branch tracks <code>staging/master</code>.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>git checkout -b staging staging/master
+</span><span class='line'>Branch <span class="s1">&#39;staging&#39;</span> <span class="nb">set </span>up to track remote branch <span class="s1">&#39;master&#39;</span> from <span class="s1">&#39;staging&#39;</span>.
+</span><span class='line'>Switched to a new branch <span class="s1">&#39;staging&#39;</span>
+</span><span class='line'><span class="nv">$ </span>git checkout -b master production/master
+</span><span class='line'>Branch <span class="s1">&#39;master&#39;</span> <span class="nb">set </span>up to track remote branch <span class="s1">&#39;master&#39;</span> from <span class="s1">&#39;production&#39;</span>.
+</span><span class='line'>Switched to a new branch <span class="s1">&#39;master&#39;</span>
+</span></code></pre></td></tr></table></div></figure>
+
 
 <p>Easy breezy lemon squeezy, eller hur? Hejdå!</p>
 </div>
