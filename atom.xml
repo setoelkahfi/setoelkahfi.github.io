@@ -4,7 +4,7 @@
   <title><![CDATA[Seto Elkahfi]]></title>
   <link href="http://setoelkahfi.github.io/atom.xml" rel="self"/>
   <link href="http://setoelkahfi.github.io/"/>
-  <updated>2018-12-03T00:30:39+01:00</updated>
+  <updated>2018-12-07T10:06:07+01:00</updated>
   <id>http://setoelkahfi.github.io/</id>
   <author>
     <name><![CDATA[Seto Elkahfi]]></name>
@@ -18,7 +18,7 @@
     <link href="http://setoelkahfi.github.io/blog/2018/12/02/how-to-setup-heroku-app-with-multiple-environtment-for-each-branch-on-new-machine/"/>
     <updated>2018-12-02T02:57:34+01:00</updated>
     <id>http://setoelkahfi.github.io/blog/2018/12/02/how-to-setup-heroku-app-with-multiple-environtment-for-each-branch-on-new-machine</id>
-    <content type="html"><![CDATA[<p>Recently, I want to migrate my side project into another domain. This project is hosted in Heroku. I really like the concept of push-to-deploy that Heroku good at. It frees me of server-management thingy. And, I feel so geeky whenever I use git from command line, hahaha. Ok, let me explain the state of the app.</p>
+    <content type="html"><![CDATA[<p>Recently, I want to migrate my side project into another domain. This project is currently hosted on Heroku platform. I really like the concept of push-to-deploy that Heroku good at. It frees me from server-management thingy. And, I feel so geeky whenever I use git from command line, hahaha. Ok, let me explain the state of the app.</p>
 
 <!-- more -->
 
@@ -107,6 +107,146 @@ So, each application in Heroku will has its own repository. In my case, staging 
 </span><span class='line'><span class="nv">$ </span>git checkout -b master production/master
 </span><span class='line'>Branch <span class="s1">&#39;master&#39;</span> <span class="nb">set </span>up to track remote branch <span class="s1">&#39;master&#39;</span> from <span class="s1">&#39;production&#39;</span>.
 </span><span class='line'>Switched to a new branch <span class="s1">&#39;master&#39;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<h2>`bundle install` And The PostgreSQL Thingy</h2>
+
+
+<p>After you finish with the git stuff, you need to install the dependency. Use bundle.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>bundle install
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>And will most likely face this issue after running that command.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+<span class='line-number'>51</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>Fetching pg 0.21.0
+</span><span class='line'>Installing pg 0.21.0 with native extensions
+</span><span class='line'>Gem::Ext::BuildError: ERROR: Failed to build gem native extension.
+</span><span class='line'>
+</span><span class='line'>current directory:
+</span><span class='line'>/Users/setoelkahfi/.rbenv/versions/2.5.3/lib/ruby/gems/2.5.0/gems/pg-0.21.0/ext
+</span><span class='line'>/Users/setoelkahfi/.rbenv/versions/2.5.3/bin/ruby -r ./siteconf20181203-18631-gh6gvb.rb
+</span><span class='line'>extconf.rb
+</span><span class='line'>checking <span class="k">for</span> pg_config... no
+</span><span class='line'>No pg_config... trying anyway. If building fails, please try again with
+</span><span class='line'> --with-pg-config<span class="o">=</span>/path/to/pg_config
+</span><span class='line'>checking <span class="k">for</span> libpq-fe.h... no
+</span><span class='line'>Can<span class="s1">&#39;t find the &#39;</span>libpq-fe.h header
+</span><span class='line'>*** extconf.rb failed ***
+</span><span class='line'>Could not create Makefile due to some reason, probably lack of necessary
+</span><span class='line'>libraries and/or headers.  Check the mkmf.log file <span class="k">for</span> more details.  You may
+</span><span class='line'>need configuration options.
+</span><span class='line'>
+</span><span class='line'>Provided configuration options:
+</span><span class='line'>  --with-opt-dir
+</span><span class='line'>  --without-opt-dir
+</span><span class='line'>  --with-opt-include
+</span><span class='line'>  --without-opt-include<span class="o">=</span><span class="k">${</span><span class="nv">opt</span><span class="p">-dir</span><span class="k">}</span>/include
+</span><span class='line'>  --with-opt-lib
+</span><span class='line'>  --without-opt-lib<span class="o">=</span><span class="k">${</span><span class="nv">opt</span><span class="p">-dir</span><span class="k">}</span>/lib
+</span><span class='line'>  --with-make-prog
+</span><span class='line'>  --without-make-prog
+</span><span class='line'>  --srcdir<span class="o">=</span>.
+</span><span class='line'>  --curdir
+</span><span class='line'>  --ruby<span class="o">=</span>/Users/setoelkahfi/.rbenv/versions/2.5.3/bin/<span class="k">$(</span>RUBY_BASE_NAME<span class="k">)</span>
+</span><span class='line'>  --with-pg
+</span><span class='line'>  --without-pg
+</span><span class='line'>  --enable-windows-cross
+</span><span class='line'>  --disable-windows-cross
+</span><span class='line'>  --with-pg-config
+</span><span class='line'>  --without-pg-config
+</span><span class='line'>  --with-pg_config
+</span><span class='line'>  --without-pg_config
+</span><span class='line'>  --with-pg-dir
+</span><span class='line'>  --without-pg-dir
+</span><span class='line'>  --with-pg-include
+</span><span class='line'>  --without-pg-include<span class="o">=</span><span class="k">${</span><span class="nv">pg</span><span class="p">-dir</span><span class="k">}</span>/include
+</span><span class='line'>  --with-pg-lib
+</span><span class='line'>  --without-pg-lib<span class="o">=</span><span class="k">${</span><span class="nv">pg</span><span class="p">-dir</span><span class="k">}</span>/lib
+</span><span class='line'>
+</span><span class='line'>To see why this extension failed to compile, please check the mkmf.log which can be found
+</span><span class='line'>here:
+</span><span class='line'>
+</span><span class='line'>/Users/setoelkahfi/.rbenv/versions/2.5.3/lib/ruby/gems/2.5.0/extensions/x86_64-darwin-17/2.5.0-static/pg-0.21.0/mkmf.log
+</span><span class='line'>
+</span><span class='line'>extconf failed, <span class="nb">exit </span>code 1
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>This is because the app is using PostgreSQL, and you don&rsquo;t have the database yet. You usually use Postgress.app for the installation. Or you can use other PostgreSQL distribution (is this the term?). Frankly speaking, it because it&rsquo;s the default database for Ruby stack on Heroku that we use PostgreSQL. But I like it. So doesn&rsquo;t really matter to me.</p>
+
+<p>You need to install <code>postgresql</code> via Homebrew.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>brew install postgresql
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>You might need to change <code>password</code> and <code>username</code> for your local database, since you committed them on your other machine.</p>
+
+<h2>Run The App Locally</h2>
+
+
+<p>If you&rsquo;re lucky (and you&rsquo;re always), you will be able to run the app locally with <code>heroku</code>command:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>heroku <span class="nb">local</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
