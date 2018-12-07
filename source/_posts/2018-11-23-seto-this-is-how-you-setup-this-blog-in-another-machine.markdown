@@ -119,7 +119,7 @@ Then you need to test the actual blogging command. Generate post, preview, deplo
 $ bundle exec rake preview # to preview the blog in development server
 $ bundle exec rake new_post["title"] # to make new post
 ```
-If you want to workaround with this, you should uninstall rake that doesn't match with the rake in the Gemfile.
+If you want to workaround with this, there are two options. First, you should uninstall rake that doesn't match with the rake in the Gemfile.
 
 ```
 $ gem uninstall rake
@@ -137,6 +137,12 @@ After that, you can update the rake with this command:
 $ bundle update rake
 ```
 though you unsuccessfully update the rake in Gemfile. But now, you should be able to use rake command without prepend it with `bundle exec`.
+
+Secondly, you should update your Gemfile to the version of rake that already installed in your machine. For example;
+
+``` bash
+  gem 'rake', '~> 12.3.1'
+```
 
 Always preview the blog before publishing it. Use the preview command and check in your browser on port 4000.
 ```
@@ -161,7 +167,9 @@ hint: See the 'Note about fast-forwards' in 'git push --help' for details.
 
 ## Github Pages deploy complete
 ```
-The explanation for this problem is that, `rake setup_github_pages` will remove `_deploy` folder and initiate new repository inside of it. So, it it happened, just remove _deploy folder, and do clone the master branch in it, again. Like so:
+The explanation for this problem is that, `rake setup_github_pages` will remove `_deploy` folder and initiate new repository inside of it. Or, when you run `rake generate`, it will make `master` branch which completely different from the remote branch. That's why git push will fail.
+
+So, if it is happened, just remove _deploy folder, and do clone the master branch in it, again. Like so:
 ```
 $ rm -rf _deploy/
 $ git clone https://github.com/setoelkahfi/setoelkahfi.github.io _deploy
