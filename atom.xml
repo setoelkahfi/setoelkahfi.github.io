@@ -4,7 +4,7 @@
   <title><![CDATA[Seto Elkahfi]]></title>
   <link href="http://setoelkahfi.github.io/atom.xml" rel="self"/>
   <link href="http://setoelkahfi.github.io/"/>
-  <updated>2018-12-07T10:06:07+01:00</updated>
+  <updated>2018-12-07T15:40:45+01:00</updated>
   <id>http://setoelkahfi.github.io/</id>
   <author>
     <name><![CDATA[Seto Elkahfi]]></name>
@@ -564,7 +564,7 @@ And for a matter of fact, you always use rbenv when your new machine is MacBook.
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>If you want to workaround with this, you should uninstall rake that doesn&rsquo;t match with the rake in the Gemfile.</p>
+<p>If you want to workaround with this, there are two options. First, you should uninstall rake that doesn&rsquo;t match with the rake in the Gemfile.</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -595,6 +595,13 @@ And for a matter of fact, you always use rbenv when your new machine is MacBook.
 
 
 <p>though you unsuccessfully update the rake in Gemfile. But now, you should be able to use rake command without prepend it with <code>bundle exec</code>.</p>
+
+<p>Secondly, you should update your Gemfile to the version of rake that already installed in your machine. For example;</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>  gem <span class="s1">&#39;rake&#39;</span>, <span class="s1">&#39;~&gt; 12.3.1&#39;</span>
+</span></code></pre></td></tr></table></div></figure>
+
 
 <p>Always preview the blog before publishing it. Use the preview command and check in your browser on port 4000.</p>
 
@@ -635,7 +642,9 @@ And for a matter of fact, you always use rbenv when your new machine is MacBook.
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>The explanation for this problem is that, <code>rake setup_github_pages</code> will remove <code>_deploy</code> folder and initiate new repository inside of it. So, it it happened, just remove _deploy folder, and do clone the master branch in it, again. Like so:</p>
+<p>The explanation for this problem is that, <code>rake setup_github_pages</code> will remove <code>_deploy</code> folder and initiate new repository inside of it. Or, when you run <code>rake generate</code>, it will make <code>master</code> branch which completely different from the remote branch. That&rsquo;s why git push will fail.</p>
+
+<p>So, if it is happened, just remove _deploy folder, and do clone the master branch in it, again. Like so:</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
