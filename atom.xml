@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Seto Elkahfi]]></title>
+  <title><![CDATA[Seto Elkahfi - iOS Developer]]></title>
   <link href="http://setoelkahfi.github.io/atom.xml" rel="self"/>
   <link href="http://setoelkahfi.github.io/"/>
-  <updated>2018-12-07T15:40:45+01:00</updated>
+  <updated>2018-12-09T20:01:42+01:00</updated>
   <id>http://setoelkahfi.github.io/</id>
   <author>
     <name><![CDATA[Seto Elkahfi]]></name>
@@ -12,6 +12,36 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[How to Simplify Heroku App Development Environments With Git Branching]]></title>
+    <link href="http://setoelkahfi.github.io/blog/2018/12/09/how-to-simplify-heroku-app-development-environments-with-git-branching/"/>
+    <updated>2018-12-09T19:07:03+01:00</updated>
+    <id>http://setoelkahfi.github.io/blog/2018/12/09/how-to-simplify-heroku-app-development-environments-with-git-branching</id>
+    <content type="html"><![CDATA[<p>The Heroku system for managing different app&rsquo;s environments is difficult to understand for me at first. The concept of having different branches tracking different remote repository is new. But, overtime, as I use the service, I&rsquo;m kind of familiar with it.</p>
+
+<!-- more -->
+
+
+<p>The confusion for me is because an asymmetry behaviour of Git branching system itself. As written in <a href="https://longair.net/blog/2011/02/27/an-asymmetry-between-git-pull-and-git-push/">this post</a>, a simple <code>git pull</code> and <code>git push</code> will behave differently regarding remote tracking branch. You can just read it in the blog post.</p>
+
+<p>My point is, dear future <code>self</code>, it will helpful for you if you set the <code>push.default</code> config to <code>upstream</code> (previously <code>tracking</code>). With this command, everytime you do <code>git push</code>, it will automatically push the <code>upstream</code> branch. For example, if you&rsquo;re on the <code>staging</code> branch, <code>git push</code> will update repository in <code>staging</code> remote <code>master</code> branch. Simple, right?</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>git config push.default tracking
+</span><span class='line'><span class="nv">$ </span>git push
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>You should always follow <a href="https://devcenter.heroku.com/articles/multiple-environments">the official documentation</a> for this specific Heroku setup. Hej då!</p>
+
+<p>Reference:</p>
+
+<p><a href="https://devcenter.heroku.com/articles/multiple-environments">https://devcenter.heroku.com/articles/multiple-environments</a>
+<a href="https://longair.net/blog/2011/02/27/an-asymmetry-between-git-pull-and-git-push/">https://longair.net/blog/2011/02/27/an-asymmetry-between-git-pull-and-git-push/</a></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[How to Setup Heroku App With Multiple Environtment for Each Branch on New Machine]]></title>

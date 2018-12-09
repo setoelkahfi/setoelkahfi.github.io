@@ -5,13 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>About - Seto Elkahfi - iOS Developer</title>
+  <title>How to Simplify Heroku App Development Environments With Git Branching - Seto Elkahfi - iOS Developer</title>
   <meta name="author" content="Seto Elkahfi">
 
   
-  <meta name="description" content="About Mar 15th, 2015 8:56 pm Find me on internet with @setoelkahfi. I write code.
-I write book (after my 100th book on goodreads.com list).
-I write &hellip;">
+  <meta name="description" content="The Heroku system for managing different app&rsquo;s environments is difficult to understand for me at first. The concept of having different &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -20,7 +18,7 @@ I write &hellip;">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://setoelkahfi.github.io/about/">
+  <link rel="canonical" href="http://setoelkahfi.github.io/blog/2018/12/09/how-to-simplify-heroku-app-development-environments-with-git-branching/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="Seto Elkahfi - iOS Developer" type="application/atom+xml">
@@ -93,53 +91,85 @@ I write &hellip;">
   <div id="main">
     <div id="content">
       <div>
-<article role="article">
+<article class="hentry" role="article">
   
   <header>
-    <h1 class="entry-title">About</h1>
-    <p class="meta">
-
-
-
-
-<time class='entry-date' datetime='2015-03-15T20:56:00+01:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>15</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>8:56 pm</span></time></p>
-  </header>
-  
-  <p>Find me on internet with <a href="https://www.google.com/search?q=setoelkahfi">@setoelkahfi</a>.</p>
-
-<ul>
-<li>I write code.</li>
-<li>I write book (after my 100th book on goodreads.com list).</li>
-<li>I write music.</li>
-</ul>
-
-
-<blockquote><p>&ldquo;Be the change you want to see in this world.&rdquo;</p></blockquote>
-
-  
-    <footer>
+    
+      <h1 class="entry-title">How to Simplify Heroku App Development Environments With Git Branching</h1>
+    
+    
       <p class="meta">
         
-        
 
 
 
 
-<time class='entry-date' datetime='2015-03-15T20:56:00+01:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>15</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>8:56 pm</span></time>
+<time class='entry-date' datetime='2018-12-09T19:07:03+01:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>9</span><span class='date-suffix'>th</span>, <span class='date-year'>2018</span></span> <span class='time'>7:07 pm</span></time>
         
       </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>The Heroku system for managing different app&rsquo;s environments is difficult to understand for me at first. The concept of having different branches tracking different remote repository is new. But, overtime, as I use the service, I&rsquo;m kind of familiar with it.</p>
+
+<!-- more -->
+
+
+<p>The confusion for me is because an asymmetry behaviour of Git branching system itself. As written in <a href="https://longair.net/blog/2011/02/27/an-asymmetry-between-git-pull-and-git-push/">this post</a>, a simple <code>git pull</code> and <code>git push</code> will behave differently regarding remote tracking branch. You can just read it in the blog post.</p>
+
+<p>My point is, dear future <code>self</code>, it will helpful for you if you set the <code>push.default</code> config to <code>upstream</code> (previously <code>tracking</code>). With this command, everytime you do <code>git push</code>, it will automatically push the <code>upstream</code> branch. For example, if you&rsquo;re on the <code>staging</code> branch, <code>git push</code> will update repository in <code>staging</code> remote <code>master</code> branch. Simple, right?</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>git config push.default tracking
+</span><span class='line'><span class="nv">$ </span>git push
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>You should always follow <a href="https://devcenter.heroku.com/articles/multiple-environments">the official documentation</a> for this specific Heroku setup. Hej då!</p>
+
+<p>Reference:</p>
+
+<p><a href="https://devcenter.heroku.com/articles/multiple-environments">https://devcenter.heroku.com/articles/multiple-environments</a>
+<a href="https://longair.net/blog/2011/02/27/an-asymmetry-between-git-pull-and-git-push/">https://longair.net/blog/2011/02/27/an-asymmetry-between-git-pull-and-git-push/</a></p>
+</div>
+
+
+  <footer>
+    <p class="meta">
       
-        <div class="sharing">
   
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://setoelkahfi.github.io/about/index.html" data-via="" data-counturl="http://setoelkahfi.github.io/about/index.html" >Tweet</a>
+
+<span class="byline author vcard">Posted by <span class="fn">Seto Elkahfi</span></span>
+
+      
+
+
+
+
+<time class='entry-date' datetime='2018-12-09T19:07:03+01:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>9</span><span class='date-suffix'>th</span>, <span class='date-year'>2018</span></span> <span class='time'>7:07 pm</span></time>
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://setoelkahfi.github.io/blog/2018/12/09/how-to-simplify-heroku-app-development-environments-with-git-branching/" data-via="" data-counturl="http://setoelkahfi.github.io/blog/2018/12/09/how-to-simplify-heroku-app-development-environments-with-git-branching/" >Tweet</a>
   
   
   
 </div>
 
+    
+    <p class="meta">
       
-    </footer>
-  
+        <a class="basic-alignment left" href="/blog/2018/12/02/how-to-setup-heroku-app-with-multiple-environtment-for-each-branch-on-new-machine/" title="Previous Post: How To Setup Heroku App With Multiple Environtment For Each Branch On New Machine">&laquo; How To Setup Heroku App With Multiple Environtment For Each Branch On New Machine</a>
+      
+      
+    </p>
+  </footer>
 </article>
 
 </div>

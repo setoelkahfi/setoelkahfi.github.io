@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
+<loc>http://setoelkahfi.github.io/blog/2018/12/09/how-to-simplify-heroku-app-development-environments-with-git-branching/</loc>
+<lastmod>2018-12-09T19:07:03+01:00</lastmod>
+</url>
+<url>
 <loc>http://setoelkahfi.github.io/blog/2018/12/02/how-to-setup-heroku-app-with-multiple-environtment-for-each-branch-on-new-machine/</loc>
 <lastmod>2018-12-02T02:57:34+01:00</lastmod>
 </url>
