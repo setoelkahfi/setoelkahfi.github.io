@@ -1,12 +1,14 @@
 ---
 layout: post
 title: "Git Submodule Why My Remote HEAD Always Behind The Local HEAD"
-date: 2018-12-10 18:37:14 +0100
+date: 2019-01-03 18:56:14 +0100
 comments: true
 categories: 
 ---
 
 The git submodule is something I've never use it extensively during my career as software developer. But fortunately, now in my current work in Sweden we use it. I'm lucky enough to have the opportunity to actually learn to use it in real world. And this is the first simple problem that I encountered during my work with git submodule. First, let me tell you the background of the project.
+
+<!-- more -->
 
 <h2>iOS Project With Git Submodule</h2>
 This is an iOS project that share resources (icon, string translations, configurations, etc.) with Android project. I will not talk about the Android project. So, basically we have translation file in .xlsx file. It's stored in Google docs, so everyone in the team can access, add, and modifies it. Everytime we add new new translations, we need to run a 'python' script against it, and it will generate the resource file for both iOS and Android project. It works smoothly, thanks to our previous
