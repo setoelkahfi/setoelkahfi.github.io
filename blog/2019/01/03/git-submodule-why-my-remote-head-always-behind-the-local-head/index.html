@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Category: Technical - Seto Elkahfi - iOS Developer</title>
+  <title>Git Submodule Why My Remote HEAD Always Behind the Local HEAD - Seto Elkahfi - iOS Developer</title>
   <meta name="author" content="Seto Elkahfi">
 
   
-  <meta name="description" content="Category: technical">
+  <meta name="description" content="The git submodule is something I&rsquo;ve never use it extensively during my career as software developer. But fortunately, now in my current work in &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://setoelkahfi.github.io/blog/categories/technical/">
+  <link rel="canonical" href="http://setoelkahfi.github.io/blog/2019/01/03/git-submodule-why-my-remote-head-always-behind-the-local-head/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="Seto Elkahfi - iOS Developer" type="application/atom+xml">
@@ -91,49 +91,96 @@
   <div id="main">
     <div id="content">
       <div>
-<article role="article">
+<article class="hentry" role="article">
   
   <header>
-    <h1 class="entry-title">Category: Technical</h1>
+    
+      <h1 class="entry-title">Git Submodule Why My Remote HEAD Always Behind the Local HEAD</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2019-01-03T18:56:14+01:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>3</span><span class='date-suffix'>rd</span>, <span class='date-year'>2019</span></span> <span class='time'>6:56 pm</span></time>
+        
+      </p>
     
   </header>
-  
-  <div id="blog-archives" class="category">
+
+
+<div class="entry-content"><p>The git submodule is something I&rsquo;ve never use it extensively during my career as software developer. But fortunately, now in my current work in Sweden we use it. I&rsquo;m lucky enough to have the opportunity to actually learn to use it in real world. And this is the first simple problem that I encountered during my work with git submodule. First, let me tell you the background of the project.</p>
+
+<!-- more -->
 
 
 
-  
-  <h2>2018</h2>
 
-<article>
-  
-<h1><a href="/blog/2018/11/30/solved-could-not-find-firebase-iid-interop-dot-aar-com-dot-google-dot-firebase-firebase-iid-interop-16-dot-0-0/">[SOLVED] Could Not Find firebase-iid-interop.aar (com.google.firebase:firebase-iid-interop:16.0.0).</a></h1>
-<time datetime="2018-11-30T11:59:41+01:00" pubdate><span class='month'>Nov</span> <span class='day'>30</span> <span class='year'>2018</span></time>
-
-<footer>
-  <span class="categories">posted in <a class='category' href='/blog/categories/android-development/'>android development</a>, <a class='category' href='/blog/categories/technical/'>technical</a></span>
-</footer>
+<h2>iOS Project With Git Submodule</h2>
 
 
-</article>
+<p>This is an iOS project that share resources (icon, string translations, configurations, etc.) with Android project. I will not talk about the Android project. So, basically we have translation file in .xlsx file. It&rsquo;s stored in Google docs, so everyone in the team can access, add, and modifies it. Everytime we add new new translations, we need to run a &lsquo;python&rsquo; script against it, and it will generate the resource file for both iOS and Android project. It works smoothly, thanks to our previous
+developer :beer.</p>
+
+<h2>The Missing Part</h2>
 
 
+<p>As usual, after someone added new translations and generate the resource strings, she should commit it in the resource repository, which is inside the iOS project. What I missed about how git submodule works is you should also commit the change (which is the new commit inside the submodule) in the parent repository. Off course, after the other developer pushed the changes to the remote repository.</p>
 
-<article>
-  
-<h1><a href="/blog/2018/11/23/seto-this-is-how-you-setup-this-blog-in-another-machine/">Seto, This Is How You Setup This Blog in Another Machine</a></h1>
-<time datetime="2018-11-23T12:14:36+01:00" pubdate><span class='month'>Nov</span> <span class='day'>23</span> <span class='year'>2018</span></time>
-
-<footer>
-  <span class="categories">posted in <a class='category' href='/blog/categories/technical/'>technical</a></span>
-</footer>
+<h2>The Circle CI Pull The Wrong Commit</h2>
 
 
-</article>
+<p>Previously I asked my colleague why my submodule HEAD is always behind the remote in parent repository. That&rsquo;s actually the effect of not committing the change in submodule repository in the parent repository. This problem will affect how our CI build pull the string translations generated in the submodule: it always pull whatever it is in the HEAD.</p>
 
+<p>Glad I understand it. I know it might a simple concept to understand. But I hope someone will benefit from my post here. Once, everybody is a beginner.</p>
+
+<p><a href="https://stackoverflow.com/a/36375256/1137814">https://stackoverflow.com/a/36375256/1137814</a>
+<a href="https://ttboj.wordpress.com/2014/05/06/keeping-git-submodules-in-sync-with-your-branches/">https://ttboj.wordpress.com/2014/05/06/keeping-git-submodules-in-sync-with-your-branches/</a></p>
 </div>
 
+
+  <footer>
+    <p class="meta">
+      
   
+
+<span class="byline author vcard">Posted by <span class="fn">Seto Elkahfi</span></span>
+
+      
+
+
+
+
+<time class='entry-date' datetime='2019-01-03T18:56:14+01:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>3</span><span class='date-suffix'>rd</span>, <span class='date-year'>2019</span></span> <span class='time'>6:56 pm</span></time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/git/'>git</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://setoelkahfi.github.io/blog/2019/01/03/git-submodule-why-my-remote-head-always-behind-the-local-head/" data-via="" data-counturl="http://setoelkahfi.github.io/blog/2019/01/03/git-submodule-why-my-remote-head-always-behind-the-local-head/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2018/12/09/how-to-simplify-heroku-app-development-environments-with-git-branching/" title="Previous Post: How To Simplify Heroku App Development Environments With Git Branching">&laquo; How To Simplify Heroku App Development Environments With Git Branching</a>
+      
+      
+    </p>
+  </footer>
 </article>
 
 </div>

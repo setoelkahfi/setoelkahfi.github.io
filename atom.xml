@@ -4,7 +4,7 @@
   <title><![CDATA[Seto Elkahfi - iOS Developer]]></title>
   <link href="http://setoelkahfi.github.io/atom.xml" rel="self"/>
   <link href="http://setoelkahfi.github.io/"/>
-  <updated>2018-12-09T20:01:42+01:00</updated>
+  <updated>2019-01-03T18:56:34+01:00</updated>
   <id>http://setoelkahfi.github.io/</id>
   <author>
     <name><![CDATA[Seto Elkahfi]]></name>
@@ -12,6 +12,41 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Git Submodule Why My Remote HEAD Always Behind the Local HEAD]]></title>
+    <link href="http://setoelkahfi.github.io/blog/2019/01/03/git-submodule-why-my-remote-head-always-behind-the-local-head/"/>
+    <updated>2019-01-03T18:56:14+01:00</updated>
+    <id>http://setoelkahfi.github.io/blog/2019/01/03/git-submodule-why-my-remote-head-always-behind-the-local-head</id>
+    <content type="html"><![CDATA[<p>The git submodule is something I&rsquo;ve never use it extensively during my career as software developer. But fortunately, now in my current work in Sweden we use it. I&rsquo;m lucky enough to have the opportunity to actually learn to use it in real world. And this is the first simple problem that I encountered during my work with git submodule. First, let me tell you the background of the project.</p>
+
+<!-- more -->
+
+
+
+
+<h2>iOS Project With Git Submodule</h2>
+
+
+<p>This is an iOS project that share resources (icon, string translations, configurations, etc.) with Android project. I will not talk about the Android project. So, basically we have translation file in .xlsx file. It&rsquo;s stored in Google docs, so everyone in the team can access, add, and modifies it. Everytime we add new new translations, we need to run a &lsquo;python&rsquo; script against it, and it will generate the resource file for both iOS and Android project. It works smoothly, thanks to our previous
+developer :beer.</p>
+
+<h2>The Missing Part</h2>
+
+
+<p>As usual, after someone added new translations and generate the resource strings, she should commit it in the resource repository, which is inside the iOS project. What I missed about how git submodule works is you should also commit the change (which is the new commit inside the submodule) in the parent repository. Off course, after the other developer pushed the changes to the remote repository.</p>
+
+<h2>The Circle CI Pull The Wrong Commit</h2>
+
+
+<p>Previously I asked my colleague why my submodule HEAD is always behind the remote in parent repository. That&rsquo;s actually the effect of not committing the change in submodule repository in the parent repository. This problem will affect how our CI build pull the string translations generated in the submodule: it always pull whatever it is in the HEAD.</p>
+
+<p>Glad I understand it. I know it might a simple concept to understand. But I hope someone will benefit from my post here. Once, everybody is a beginner.</p>
+
+<p><a href="https://stackoverflow.com/a/36375256/1137814">https://stackoverflow.com/a/36375256/1137814</a>
+<a href="https://ttboj.wordpress.com/2014/05/06/keeping-git-submodules-in-sync-with-your-branches/">https://ttboj.wordpress.com/2014/05/06/keeping-git-submodules-in-sync-with-your-branches/</a></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[How to Simplify Heroku App Development Environments With Git Branching]]></title>
