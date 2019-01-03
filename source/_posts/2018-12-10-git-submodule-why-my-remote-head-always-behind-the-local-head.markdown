@@ -3,7 +3,7 @@ layout: post
 title: "Git Submodule Why My Remote HEAD Always Behind The Local HEAD"
 date: 2019-01-03 18:56:14 +0100
 comments: true
-categories: 
+categories: Git 
 ---
 
 The git submodule is something I've never use it extensively during my career as software developer. But fortunately, now in my current work in Sweden we use it. I'm lucky enough to have the opportunity to actually learn to use it in real world. And this is the first simple problem that I encountered during my work with git submodule. First, let me tell you the background of the project.
