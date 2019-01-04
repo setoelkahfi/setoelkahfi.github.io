@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Computer | Seto Elkahfi - iOS Developer]]></title>
+  <link href="http://setoelkahfi.github.io/blog/categories/computer/atom.xml" rel="self"/>
+  <link href="http://setoelkahfi.github.io/"/>
+  <updated>2019-01-04T18:36:19+01:00</updated>
+  <id>http://setoelkahfi.github.io/</id>
+  <author>
+    <name><![CDATA[Seto Elkahfi]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[What Is Buffer Overflow?]]></title>
+    <link href="http://setoelkahfi.github.io/blog/2019/01/04/what-is-buffer-overflow/"/>
+    <updated>2019-01-04T18:24:37+01:00</updated>
+    <id>http://setoelkahfi.github.io/blog/2019/01/04/what-is-buffer-overflow</id>
+    <content type="html"><![CDATA[<p>Buffer overflows result from accepting input to a program that does not fit into receiving memory buffers, and yet still continuing to write to that memory. Clearly the main issue here is that input is not being properly checked, while the principle of complete mediation requires that all accesses to objecta (in this case memory buffers) be checked to ensure that they are allowed. It would be a mistake to miss the relevance for this principle.</p>
+
+<!-- more -->
+
+
+<p>Another relevant principle here is that of least privilege. The most serious kind of buffer overflow are those that allow the user to insert code that is subsequently executed. In these situations, foreign code is executed with the same privileges as those that the running program has. For this reason, it is am unnecessary risk to allow the program to run with higher privileges than are strictly necessary for the program to complete the task.</p>
+
+<p>Creating a buffer overflow vulnerability is a programming error. One could therefore propose that if the program code was simple then errors such as this would be less likely. In this case, one would argue for the principle of economy of mechanism.</p>
+]]></content>
+  </entry>
+  
+</feed>
