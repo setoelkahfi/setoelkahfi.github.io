@@ -4,7 +4,7 @@
   <title><![CDATA[Seto Elkahfi - iOS Developer]]></title>
   <link href="http://setoelkahfi.github.io/atom.xml" rel="self"/>
   <link href="http://setoelkahfi.github.io/"/>
-  <updated>2019-01-05T17:41:40+01:00</updated>
+  <updated>2019-01-07T02:22:57+01:00</updated>
   <id>http://setoelkahfi.github.io/</id>
   <author>
     <name><![CDATA[Seto Elkahfi]]></name>
@@ -14,44 +14,70 @@
 
   
   <entry>
-    <title type="html"><![CDATA[What Is Buffer Overflow?]]></title>
-    <link href="http://setoelkahfi.github.io/blog/2019/01/04/what-is-buffer-overflow/"/>
-    <updated>2019-01-04T18:24:37+01:00</updated>
-    <id>http://setoelkahfi.github.io/blog/2019/01/04/what-is-buffer-overflow</id>
-    <content type="html"><![CDATA[<p>One of many topics in computer security that always comes up is buffer overflows. What is <b>buffer overflow</b> exactly? And how we can relate this topic with principles for the design of security from Saltzer and Schroeder?</p>
-
-<h2>Buffer Overflow and Complete Mediation Principle</h2>
-
-
-<p>Buffer overflows result from accepting input to a program that does not fit into receiving memory buffers, and yet still continuing to write to that memory. Clearly, the main issue here is that input is not being properly checked.</p>
+    <title type="html"><![CDATA[Saltzer and Schreoder's Principles for the Design and Implementation of Security Mechanisms]]></title>
+    <link href="http://setoelkahfi.github.io/blog/2019/01/05/saltzer-and-schreoders-principles-for-the-design-and-implementation-of-security-mechanisms/"/>
+    <updated>2019-01-05T20:14:40+01:00</updated>
+    <id>http://setoelkahfi.github.io/blog/2019/01/05/saltzer-and-schreoders-principles-for-the-design-and-implementation-of-security-mechanisms</id>
+    <content type="html"><![CDATA[<p>This is one of the most frequently discuss topic in computer security field. The design principle is named after the inventors, Jerome Saltzer and Michael Schroeder. It appeared in their 1975 article <b>The Protection of Information in Computer Systems</b>. The principles consist of eight points. Below is the explanation taken from the article.</p>
 
 <!-- more -->
 
 
-<p>The principle of <b>complete mediatior</b>, from Saltzer and Schroeder&rsquo;s principles of security systems, requires that all accesses to objects (in this case memory buffers) be checked to ensure that they are allowed. It would be a mistake to miss the relevance for this principle.</p>
-
-<h2>Buffer Overflow and Least Privilege Principle</h2>
 
 
-<p>Another relevant principle here is that of <b>least privilege</b>. The most serious kind of buffer overflow are those that allow the user to insert code that is subsequently executed. In these situations, foreign code is executed with the same privileges as those that the running program has. For this reason, it is an unnecessary risk to allow the program to run with higher privileges than are strictly necessary for the program to complete its task.</p>
-
-<h2>Buffer overflow and Least Common Mechanism</h2>
+<h2>The Principle of Least Privilege</h2>
 
 
-<p>For similar reasons one can make a case for observing the principle of least common mechanism. Once a buffer overflow attack is executed the resources of the machine that is under attack are vulnerable. The less resource that are shared, the less the system is vulnerable.</p>
+<p>Every program and every user of the system should operate using the least set of privileges necessary to complete the job. Primarily, this principle limits the damage that can result from an accident or error. It also reduces the number of potential interactions among privileged programs to the minimum for correct operation, so that unintentional, unwanted, or improper uses of privilege are less likely to occur. Thus, if a question arises related to misuse of a privilege, the number of programs that must be audited is minimized. Put another way, if a mechanism can provide &ldquo;firewalls,&rdquo; the principle of least privilege provides a rationale for where to install the firewalls. The military security rule of &ldquo;need-to-know&rdquo; is an example of this principle.</p>
 
-<h2>Buffer Overflow and Economy of Mechanism</h2>
-
-
-<p>Creating a buffer overflow vulnerability is a programming error. One could therefore propose that if the program code was simple then errors such as this would be less likely. In this case, one would argue for the principle of <b>economy of mechanism</b>.</p>
-
-<h2>What is not related</h2>
+<h2>The Principle of Fail-Safe Defaults</h2>
 
 
-<p>We can see no case for the principle of open design. The principle states that the security of a mechanism should not depend on the secrecy of its design or implementation. The buffer overflow vulnerability is not a case of failed dependency on secrecy. Some confuse the principle of open design with that of open source, and suggest that if others (&ldquo;many eyes&rdquo;) could read the source code then the problem would be discovered. Though we have in general discussed the role of openness in
-security, it is a stretch to bake all such implications into the principle of open design.</p>
+<p>Base access decisions on permission rather than exclusion. This principle, suggested by E. Glaser in 1965,8 means that the default situation is lack of access, and the protection scheme identifies conditions under which access is permitted. The alternative, in which mechanisms attempt to identify conditions under which access should be refused, presents the wrong psychological base for secure system design. A conservative design must be based on arguments why objects should be accessible, rather than why they should not. In a large system some objects will be inadequately considered, so a default of lack of permission is safer. A design or implementation mistake in a mechanism that gives explicit permission tends to fail by refusing permission, a safe situation, since it will be quickly detected. On the other hand, a design or implementation mistake in a mechanism that explicitly excludes access tends to fail by allowing access, a failure which may go unnoticed in normal use. This principle applies both to the outward appearance of the protection mechanism and to its underlying implementation.</p>
 
-<p>We also have difficulties making convincing arguments for the relevance of fail-safe defaults, separation of privilege, and psychological acceptability in mitigating buffer overflow vulnerabilities.</p>
+<h2>The Principle of Economy of Mechanism</h2>
+
+
+<p>Keep the design as simple and small as possible. This well-known principle applies to any aspect of a system, but it deserves emphasis for protection mechanisms for this reason: design and implementation errors that result in unwanted access paths will not be noticed during normal use (since normal use usually does not include attempts to exercise improper access paths). As a result, techniques such as line-by-line inspection of software and physical examination of hardware that implements protection mechanisms are necessary. For such techniques to be successful, a small and simple design is essential.</p>
+
+<h2>The Principle of Complete Mediation</h2>
+
+
+<p>Every access to every object must be checked for authority. This principle, when systematically applied, is the primary underpinning of the protection system. It forces a system-wide view of access control, which in addition to normal operation includes initialization, recovery, shutdown, and maintenance. It implies that a foolproof method of identifying the source of every request must be devised. It also requires that proposals to gain performance by remembering the result of an authority check be examined skeptically. If a change in authority occurs, such remembered results must be systematically updated.</p>
+
+<h2>The Principle of Open Design</h2>
+
+
+<p>The design should not be secret. The mechanisms should not depend on the ignorance of potential attackers, but rather on the possession of specific, more easily protected, keys or passwords. This decoupling of protection mechanisms from protection keys permits the mechanisms to be examined by many reviewers without concern that the review may itself compromise the safeguards. In addition, any skeptical user may be allowed to convince himself that the system he is about to use is adequate for his purpose.9 Finally, it is simply not realistic to attempt to maintain secrecy for any system which receives wide distribution.</p>
+
+<h2>The Principle of Separation of Privilege</h2>
+
+
+<p>Where feasible, a protection mechanism that requires two keys to unlock it is more robust and flexible than one that allows access to the presenter of only a single key. The relevance of this observation to computer systems was pointed out by R. Needham in 1973. The reason is that, once the mechanism is locked, the two keys can be physically separated and distinct programs, organizations, or individuals made responsible for them. From then on, no single accident, deception, or breach of trust is sufficient to compromise the protected information. This principle is often used in bank safe-deposit boxes. It is also at work in the defense system that fires a nuclear weapon only if two different people both give the correct command. In a computer system, separated keys apply to any situation in which two or more conditions must be met before access should be permitted. For example, systems providing user-extendible protected data types usually depend on separation of privilege for their implementation.</p>
+
+<h2>The Principle of Least Common Mechanism</h2>
+
+
+<p>Minimize the amount of mechanism common to more than one user and depended on by all users. Every shared mechanism (especially one involving shared variables) represents a potential information path between users and must be designed with great care to be sure it does not unintentionally compromise security. Further, any mechanism serving all users must be certified to the satisfaction of every user, a job presumably harder than satisfying only one or a few users. For example, given the choice of implementing a new function as a supervisor procedure shared by all users or as a library procedure that can be handled as though it were the user&rsquo;s own, choose the latter course. Then, if one or a few users are not satisfied with the level of certification of the function, they can provide a substitute or not use it at all. Either way, they can avoid being harmed by a mistake in it.</p>
+
+<h2>The Principle of Psychological Acceptability</h2>
+
+
+<p>It is essential that the human interface be designed for ease of use, so that users routinely and automatically apply the protection mechanisms correctly. Also, to the extent that the user&rsquo;s mental image of his protection goals matches the mechanisms he must use, mistakes will be minimized. If he must translate his image of his protection needs into a radically different specification language, he will make errors.</p>
+
+<p>Analysts of traditional physical security systems have suggested two further design principles which, unfortunately, apply only imperfectly to computer systems.</p>
+
+<h2>The Principle of Work Factor</h2>
+
+
+<p>Compare the cost of circumventing the mechanism with the resources of a potential attacker. The cost of circumventing, commonly known as the &ldquo;work factor,&rdquo; in some cases can be easily calculated. For example, the number of experiments needed to try all possible four letter alphabetic passwords is 264 = 456 976. If the potential attacker must enter each experimental password at a terminal, one might consider a four-letter password to be adequate. On the other hand, if the attacker could use a large computer capable of trying a million passwords per second, as might be the case where industrial espionage or military security is being considered, a four-letter password would be a minor barrier for a potential intruder. The trouble with the work factor principle is that many computer protection mechanisms are not susceptible to direct work factor calculation, since defeating them by systematic attack may be logically impossible. Defeat can be accomplished only by indirect strategies, such as waiting for an accidental hardware failure or searching for an error in implementation. Reliable estimates of the length of such a wait or search are very difficult to make.</p>
+
+<h2>The Principle of Compromise Recording</h2>
+
+
+<p>It is sometimes suggested that mechanisms that reliably record that a compromise of information has occurred can be used in place of more elaborate mechanisms that completely prevent loss. For example, if a tactical plan is known to have been compromised, it may be possible to construct a different one, rendering the compromised version worthless. An unbreakable padlock on a flimsy file cabinet is an example of such a mechanism. Although the information stored inside may be easy to obtain, the cabinet will inevitably be damaged in the process and the next legitimate user will detect the loss. For another example, many computer systems record the date and time of the most recent use of each file. If this record is tamperproof and reported to the owner, it may help discover unauthorized use. In computer systems, this approach is used rarely, since it is difficult to guarantee discovery once security is broken. Physical damage usually is not involved, and logical damage (and internally stored records of tampering) can be undone by a clever attacker.10</p>
+
+<p>As is apparent, these principles do not represent absolute rules&ndash;they serve best as warnings. If some part of a design violates a principle, the violation is a symptom of potential trouble, and the design should be carefully reviewed to be sure that the trouble has been accounted for or is unimportant.</p>
 ]]></content>
   </entry>
   

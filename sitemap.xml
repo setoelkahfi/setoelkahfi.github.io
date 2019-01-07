@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
-<loc>http://setoelkahfi.github.io/blog/2019/01/04/what-is-buffer-overflow/</loc>
-<lastmod>2019-01-04T18:24:37+01:00</lastmod>
+<loc>http://setoelkahfi.github.io/blog/2019/01/05/saltzer-and-schreoders-principles-for-the-design-and-implementation-of-security-mechanisms/</loc>
+<lastmod>2019-01-05T20:14:40+01:00</lastmod>
 </url>
 <url>
 <loc>http://setoelkahfi.github.io/blog/2019/01/03/git-submodule-why-my-remote-head-always-behind-the-local-head/</loc>
@@ -59,11 +59,5 @@
 </url>
 <url>
 <loc>http://setoelkahfi.github.io/blog/categories/git/</loc>
-</url>
-<url>
-<loc>http://setoelkahfi.github.io/blog/categories/computer/</loc>
-</url>
-<url>
-<loc>http://setoelkahfi.github.io/blog/categories/security/</loc>
 </url>
 </urlset>
