@@ -4,6 +4,7 @@ title: "What Is Buffer Overflow?"
 date: 2019-01-04 18:24:37 +0100
 comments: true
 categories: Computer security 
+published: false
 ---
 One of many topics in computer security that always comes up is buffer overflows. What is <b>buffer overflow</b> exactly? And how we can relate this topic with principles for the design of security from Saltzer and Schroeder?
 
